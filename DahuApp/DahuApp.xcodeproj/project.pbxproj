@@ -1,0 +1,390 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0532AA971C5483D000711AF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0532AA961C5483D000711AF5 /* AppDelegate.swift */; };
+		0532AA9C1C5483D000711AF5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0532AA9A1C5483D000711AF5 /* Main.storyboard */; };
+		0532AA9F1C5483D000711AF5 /* DahuApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0532AA9D1C5483D000711AF5 /* DahuApp.xcdatamodeld */; };
+		0532AAA11C5483D000711AF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0532AAA01C5483D000711AF5 /* Assets.xcassets */; };
+		0532AAA41C5483D000711AF5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0532AAA21C5483D000711AF5 /* LaunchScreen.storyboard */; };
+		0532AAB01C55205F00711AF5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0532AAAF1C55205F00711AF5 /* LoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		0532AAB31C5525CD00711AF5 /* 120910dog3-41bdd.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0532AAB21C5525CD00711AF5 /* 120910dog3-41bdd.jpg */; settings = {ASSET_TAGS = (); }; };
+		0532AAB51C55277100711AF5 /* AssignedCameraCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0532AAB41C55277100711AF5 /* AssignedCameraCollectionViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		0564E9781C79A8E00026ABC6 /* UserProfile+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564E9761C79A8E00026ABC6 /* UserProfile+CoreDataProperties.swift */; settings = {ASSET_TAGS = (); }; };
+		0564E9791C79A8E00026ABC6 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564E9771C79A8E00026ABC6 /* UserProfile.swift */; settings = {ASSET_TAGS = (); }; };
+		0564E97B1C79B3390026ABC6 /* UserManagementTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564E97A1C79B3390026ABC6 /* UserManagementTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		0564E97D1C79D3AF0026ABC6 /* AssignedCameraTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564E97C1C79D3AF0026ABC6 /* AssignedCameraTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		0564E97F1C79D73D0026ABC6 /* ConfigDateTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564E97E1C79D73D0026ABC6 /* ConfigDateTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		0564E9811C79DFA80026ABC6 /* CameraDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564E9801C79DFA80026ABC6 /* CameraDetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		057223F61C79773300AB8F01 /* CreateUserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057223F51C79773300AB8F01 /* CreateUserTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0532AA931C5483D000711AF5 /* DahuApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DahuApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0532AA961C5483D000711AF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		0532AA9B1C5483D000711AF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0532AA9E1C5483D000711AF5 /* DahuApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DahuApp.xcdatamodel; sourceTree = "<group>"; };
+		0532AAA01C5483D000711AF5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0532AAA31C5483D000711AF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		0532AAA51C5483D000711AF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0532AAAF1C55205F00711AF5 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		0532AAB21C5525CD00711AF5 /* 120910dog3-41bdd.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "120910dog3-41bdd.jpg"; sourceTree = "<group>"; };
+		0532AAB41C55277100711AF5 /* AssignedCameraCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssignedCameraCollectionViewController.swift; sourceTree = "<group>"; };
+		0564E9761C79A8E00026ABC6 /* UserProfile+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserProfile+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		0564E9771C79A8E00026ABC6 /* UserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		0564E97A1C79B3390026ABC6 /* UserManagementTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManagementTableViewController.swift; sourceTree = "<group>"; };
+		0564E97C1C79D3AF0026ABC6 /* AssignedCameraTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssignedCameraTableViewController.swift; sourceTree = "<group>"; };
+		0564E97E1C79D73D0026ABC6 /* ConfigDateTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigDateTableViewController.swift; sourceTree = "<group>"; };
+		0564E9801C79DFA80026ABC6 /* CameraDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraDetailViewController.swift; sourceTree = "<group>"; };
+		057223F51C79773300AB8F01 /* CreateUserTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateUserTableViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0532AA901C5483D000711AF5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0532AA8A1C5483D000711AF5 = {
+			isa = PBXGroup;
+			children = (
+				0532AA951C5483D000711AF5 /* DahuApp */,
+				0532AA941C5483D000711AF5 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0532AA941C5483D000711AF5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0532AA931C5483D000711AF5 /* DahuApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0532AA951C5483D000711AF5 /* DahuApp */ = {
+			isa = PBXGroup;
+			children = (
+				057223F71C7995A100AB8F01 /* Entity */,
+				057223EC1C796DB300AB8F01 /* ShareView */,
+				0532AAB11C55259E00711AF5 /* Image */,
+				0532AAAC1C551F1200711AF5 /* UserView */,
+				0532AAAB1C551F0800711AF5 /* AdminView */,
+				0532AA961C5483D000711AF5 /* AppDelegate.swift */,
+				0532AA9A1C5483D000711AF5 /* Main.storyboard */,
+				0532AAA01C5483D000711AF5 /* Assets.xcassets */,
+				0532AAA21C5483D000711AF5 /* LaunchScreen.storyboard */,
+				0532AAA51C5483D000711AF5 /* Info.plist */,
+				0532AA9D1C5483D000711AF5 /* DahuApp.xcdatamodeld */,
+			);
+			path = DahuApp;
+			sourceTree = "<group>";
+		};
+		0532AAAB1C551F0800711AF5 /* AdminView */ = {
+			isa = PBXGroup;
+			children = (
+				057223F51C79773300AB8F01 /* CreateUserTableViewController.swift */,
+				0564E97A1C79B3390026ABC6 /* UserManagementTableViewController.swift */,
+				0564E97C1C79D3AF0026ABC6 /* AssignedCameraTableViewController.swift */,
+				0564E97E1C79D73D0026ABC6 /* ConfigDateTableViewController.swift */,
+			);
+			name = AdminView;
+			sourceTree = "<group>";
+		};
+		0532AAAC1C551F1200711AF5 /* UserView */ = {
+			isa = PBXGroup;
+			children = (
+				0532AAB41C55277100711AF5 /* AssignedCameraCollectionViewController.swift */,
+				0564E9801C79DFA80026ABC6 /* CameraDetailViewController.swift */,
+			);
+			name = UserView;
+			sourceTree = "<group>";
+		};
+		0532AAB11C55259E00711AF5 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				0532AAB21C5525CD00711AF5 /* 120910dog3-41bdd.jpg */,
+			);
+			name = Image;
+			sourceTree = "<group>";
+		};
+		057223EC1C796DB300AB8F01 /* ShareView */ = {
+			isa = PBXGroup;
+			children = (
+				0532AAAF1C55205F00711AF5 /* LoginViewController.swift */,
+			);
+			name = ShareView;
+			sourceTree = "<group>";
+		};
+		057223F71C7995A100AB8F01 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				0564E9761C79A8E00026ABC6 /* UserProfile+CoreDataProperties.swift */,
+				0564E9771C79A8E00026ABC6 /* UserProfile.swift */,
+			);
+			name = Entity;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0532AA921C5483D000711AF5 /* DahuApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0532AAA81C5483D000711AF5 /* Build configuration list for PBXNativeTarget "DahuApp" */;
+			buildPhases = (
+				0532AA8F1C5483D000711AF5 /* Sources */,
+				0532AA901C5483D000711AF5 /* Frameworks */,
+				0532AA911C5483D000711AF5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DahuApp;
+			productName = DahuApp;
+			productReference = 0532AA931C5483D000711AF5 /* DahuApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0532AA8B1C5483D000711AF5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = "Le Minh Tu";
+				TargetAttributes = {
+					0532AA921C5483D000711AF5 = {
+						CreatedOnToolsVersion = 7.0.1;
+					};
+				};
+			};
+			buildConfigurationList = 0532AA8E1C5483D000711AF5 /* Build configuration list for PBXProject "DahuApp" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0532AA8A1C5483D000711AF5;
+			productRefGroup = 0532AA941C5483D000711AF5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0532AA921C5483D000711AF5 /* DahuApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0532AA911C5483D000711AF5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0532AAA41C5483D000711AF5 /* LaunchScreen.storyboard in Resources */,
+				0532AAB31C5525CD00711AF5 /* 120910dog3-41bdd.jpg in Resources */,
+				0532AAA11C5483D000711AF5 /* Assets.xcassets in Resources */,
+				0532AA9C1C5483D000711AF5 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0532AA8F1C5483D000711AF5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0564E9781C79A8E00026ABC6 /* UserProfile+CoreDataProperties.swift in Sources */,
+				0532AAB01C55205F00711AF5 /* LoginViewController.swift in Sources */,
+				0564E9791C79A8E00026ABC6 /* UserProfile.swift in Sources */,
+				0532AAB51C55277100711AF5 /* AssignedCameraCollectionViewController.swift in Sources */,
+				0532AA971C5483D000711AF5 /* AppDelegate.swift in Sources */,
+				0564E97B1C79B3390026ABC6 /* UserManagementTableViewController.swift in Sources */,
+				057223F61C79773300AB8F01 /* CreateUserTableViewController.swift in Sources */,
+				0564E97D1C79D3AF0026ABC6 /* AssignedCameraTableViewController.swift in Sources */,
+				0564E9811C79DFA80026ABC6 /* CameraDetailViewController.swift in Sources */,
+				0532AA9F1C5483D000711AF5 /* DahuApp.xcdatamodeld in Sources */,
+				0564E97F1C79D73D0026ABC6 /* ConfigDateTableViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		0532AA9A1C5483D000711AF5 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0532AA9B1C5483D000711AF5 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		0532AAA21C5483D000711AF5 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0532AAA31C5483D000711AF5 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0532AAA61C5483D000711AF5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		0532AAA71C5483D000711AF5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0532AAA91C5483D000711AF5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				INFOPLIST_FILE = DahuApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tu.DahuApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		0532AAAA1C5483D000711AF5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				INFOPLIST_FILE = DahuApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tu.DahuApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0532AA8E1C5483D000711AF5 /* Build configuration list for PBXProject "DahuApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0532AAA61C5483D000711AF5 /* Debug */,
+				0532AAA71C5483D000711AF5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0532AAA81C5483D000711AF5 /* Build configuration list for PBXNativeTarget "DahuApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0532AAA91C5483D000711AF5 /* Debug */,
+				0532AAAA1C5483D000711AF5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		0532AA9D1C5483D000711AF5 /* DahuApp.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0532AA9E1C5483D000711AF5 /* DahuApp.xcdatamodel */,
+			);
+			currentVersion = 0532AA9E1C5483D000711AF5 /* DahuApp.xcdatamodel */;
+			path = DahuApp.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 0532AA8B1C5483D000711AF5 /* Project object */;
+}
