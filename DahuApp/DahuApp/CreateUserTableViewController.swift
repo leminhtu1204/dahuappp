@@ -11,6 +11,12 @@ import CoreData
 
 class CreateUserTableViewController: UITableViewController {
     
+    @IBOutlet weak var btnSaveData: UIBarButtonItem!
+    var user: UserProfile?
+    
+    @IBOutlet weak var txtFullName: UITextField!
+    @IBOutlet weak var txtEmail: UITextField!
+    
     @IBAction func btnCancel(sender: AnyObject) {
         // Depending on style of presentation (modal or push presentation), this view controller needs to be dismissed in two different ways.
         let isPresentingInAddMealMode = presentingViewController is UINavigationController
@@ -20,38 +26,16 @@ class CreateUserTableViewController: UITableViewController {
         } else {
             navigationController!.popViewControllerAnimated(true)
         }
+        
+    }
 
-    }
-    @IBOutlet weak var txtFullName: UITextField!
-    @IBOutlet weak var txtEmail: UITextField!
-    
-    @IBAction func btnSave(sender: AnyObject) {
-        
-        insertUser()
-        
-        let isPresentingInAddMealMode = presentingViewController is UINavigationController
-        
-        if isPresentingInAddMealMode {
-            dismissViewControllerAnimated(true, completion: nil)
-        } else {
-            navigationController!.popViewControllerAnimated(true)
-        }
-        
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
@@ -66,18 +50,30 @@ class CreateUserTableViewController: UITableViewController {
         return 2
     }
     
+    // This method lets you configure a view controller before it's presented.
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if btnSaveData === sender {
+            insertUser()
+        }
+    }
+
     func insertUser(){
     
         let appDel : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
         let context : NSManagedObjectContext = appDel.managedObjectContext
         
-        var user = NSEntityDescription.insertNewObjectForEntityForName("UserProfile", inManagedObjectContext: context)
+        let entityDescription =
+        NSEntityDescription.entityForName("UserProfile",
+            inManagedObjectContext: context)
         
-        user.setValue(txtFullName.text, forKey: "fullname")
-        user.setValue("password", forKey: "password")
-        user.setValue(txtEmail.text, forKey: "email")
-        user.setValue(NSDate(), forKey: "createdDate")
+        user = UserProfile(entity: entityDescription!,
+            insertIntoManagedObjectContext: context)
+        
+        user!.fullname = txtFullName.text
+        user!.password = "password"
+        user!.email = txtEmail.text
+        user!.createdDate = NSDate()
         
         do{
              try context.save()

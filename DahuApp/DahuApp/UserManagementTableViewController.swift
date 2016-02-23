@@ -47,19 +47,11 @@ class UserManagementTableViewController: UITableViewController {
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }
-
-
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initialData()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
@@ -136,14 +128,21 @@ class UserManagementTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     
-    func unwindToUserList(sender: UIStoryboardSegue) {
-        if let sourceViewController = sender.sourceViewController as? CreateUserTableViewController {
+    @IBAction func prepareForUnwind(sender: UIStoryboardSegue) {
+    if let sourceViewController = sender.sourceViewController as? CreateUserTableViewController, user = sourceViewController.user {
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                // Update an existing meal.
+                users[selectedIndexPath.row] = user
                 tableView.reloadRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .None)
             } else {
-                initialData()
+                // Add a new meal.
+                let newIndexPath = NSIndexPath(forRow: users.count, inSection: 0)
+                users.append(user)
+                tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
             }
         }
+
+
     }
     
     // Override to support editing the table view.
