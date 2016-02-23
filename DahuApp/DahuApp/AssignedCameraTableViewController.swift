@@ -9,6 +9,10 @@
 import UIKit
 
 class AssignedCameraTableViewController: UITableViewController {
+    
+    var cameras = [Camera]()
+    
+    
     @IBAction func btnSave(sender: AnyObject) {
         backToPrevious()
     }
@@ -35,6 +39,9 @@ class AssignedCameraTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        // load sample data
+        loadSampleCameras()
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,24 +52,38 @@ class AssignedCameraTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 3
+        return cameras.count
+    }
+    
+    func saveAssignedCameras() {
+    }
+    
+    func loadSampleCameras() {
+        let camera1 = Camera(switchOn: false, description: "Camera 1")
+        let camera2 = Camera(switchOn: false, description: "Camera 2")
+        let camera3 = Camera(switchOn: false, description: "Camera 3")
+        
+        cameras += [camera1, camera2, camera3]
     }
 
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
+        // Table view cells are reused and should be dequeued using a cell identifier.
+        let cellIdentifier = "cameraTableViewCell"
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! CameraTableViewCell
+        
+        let camera = cameras[indexPath.row]
+        
+        cell.switchOn.on = camera.switchOn
+        cell.cameraDescription.text = camera.description
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
