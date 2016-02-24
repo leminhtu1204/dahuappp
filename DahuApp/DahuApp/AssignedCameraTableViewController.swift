@@ -11,7 +11,7 @@ import UIKit
 class AssignedCameraTableViewController: UITableViewController {
     
     var cameras = [Camera]()
-    
+    var email: String = ""
     
     @IBAction func btnSave(sender: AnyObject) {
         backToPrevious()

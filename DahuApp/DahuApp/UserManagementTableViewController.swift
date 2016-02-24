@@ -124,8 +124,24 @@ class UserManagementTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "assignCameras" {
+            print("Click to assign cameras")
+            let assignCameraTableViewController = segue.destinationViewController as! AssignedCameraTableViewController
+            
+            print(sender)
+            print("selected cell")
+            print(self.tableView.indexPathForSelectedRow?.row)
+            
+            if let selectedUserCell = sender as? UITableViewCell {
+                print("Click selected user to assign")
+                let indexPath = tableView.indexPathForCell(selectedUserCell)!
+                let selectedUser = users[indexPath.row]
+                print(selectedUser.valueForKey("email"))
+                assignCameraTableViewController.email = (selectedUser.valueForKey("email") as? String)!
+
+            }
+        }
+    
     }
     
     @IBAction func prepareForUnwind(sender: UIStoryboardSegue) {
