@@ -10,10 +10,15 @@ import UIKit
 
 class AssignedCameraTableViewController: UITableViewController {
     
-    var cameras = [Camera]()
+    var cameras = [CameraView]()
     var email: String = ""
     
     @IBAction func btnSave(sender: AnyObject) {
+        print("Save for email: ")
+        print(email)
+        
+        saveAssignedCameras()
+        
         backToPrevious()
     }
 
@@ -60,12 +65,23 @@ class AssignedCameraTableViewController: UITableViewController {
     }
     
     func saveAssignedCameras() {
+        // reset the assigned cameras
+        
+        // save new assigned cameras
+        for index in 0...cameras.count-1 {
+            let cameraCell = tableView.cellForRowAtIndexPath(NSIndexPath.init(forRow: index, inSection: 0)) as! CameraTableViewCell
+            if cameraCell.switchOn.on {
+                print("Save this camera: ")
+                print(cameras[index].description)
+                cameras[index].save()
+            }
+        }
     }
     
     func loadSampleCameras() {
-        let camera1 = Camera(switchOn: false, description: "Camera 1")
-        let camera2 = Camera(switchOn: false, description: "Camera 2")
-        let camera3 = Camera(switchOn: false, description: "Camera 3")
+        let camera1 = CameraView(switchOn: false, description: "Camera 1", url: "nhaccuatui.com", user_email_owner: email)
+        let camera2 = CameraView(switchOn: false, description: "Camera 2", url: "nhaccuatui.com", user_email_owner: email)
+        let camera3 = CameraView(switchOn: false, description: "Camera 3", url: "nhaccuatui", user_email_owner: email)
         
         cameras += [camera1, camera2, camera3]
     }

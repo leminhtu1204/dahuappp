@@ -167,13 +167,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ve-5h-EDf">
-                                            <rect key="frame" x="274" y="6" width="30" height="30"/>
-                                            <state key="normal" title="&gt;"/>
-                                            <connections>
-                                                <segue destination="WMG-wg-BwC" kind="show" identifier="assignCameras" id="Rce-pT-aPg"/>
-                                            </connections>
-                                        </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wCC-Ll-5E5">
                                             <rect key="frame" x="8" y="11" width="178" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -182,6 +175,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="WMG-wg-BwC" kind="show" identifier="assignCameras" id="7e1-gi-twn"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -351,7 +347,7 @@
                         </imageView>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cameraTableViewCell" id="zZJ-J9-GrV" customClass="CameraTableViewCell" customModule="DahuApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="108" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="136" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zZJ-J9-GrV" id="Abr-nM-5IP">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -364,13 +360,6 @@
                                                 <rect key="frame" x="8" y="6" width="51" height="31"/>
                                             </variation>
                                         </switch>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fiS-tg-wSh">
-                                            <rect key="frame" x="274" y="6" width="30" height="30"/>
-                                            <state key="normal" title="&gt;"/>
-                                            <connections>
-                                                <segue destination="3rv-gB-ub6" kind="show" id="oa1-4F-xZo"/>
-                                            </connections>
-                                        </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Camera 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pkt-TY-3bc">
                                             <rect key="frame" x="88" y="11" width="178" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -382,6 +371,7 @@
                                 <connections>
                                     <outlet property="cameraDescription" destination="Pkt-TY-3bc" id="EEG-FQ-la0"/>
                                     <outlet property="switchOn" destination="EdY-G7-rZr" id="hcR-WU-AfB"/>
+                                    <segue destination="3rv-gB-ub6" kind="show" action="showDetailViewController:sender:" id="up0-Vq-9tj"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

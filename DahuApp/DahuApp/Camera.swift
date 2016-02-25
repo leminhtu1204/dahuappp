@@ -2,23 +2,16 @@
 //  Camera.swift
 //  DahuApp
 //
-//  Created by  Trung Trinh on 2/23/16.
+//  Created by  Trung Trinh on 2/25/16.
 //  Copyright © 2016 Le Minh Tu. All rights reserved.
 //
 
-import UIKit
+import Foundation
+import CoreData
 
-class Camera {
-    var switchOn: Bool
-    var description: String
-    
-    init() {
-        self.switchOn = false
-        self.description = "defaul_description"
-    }
-    
-    init(switchOn: Bool, description: String) {
-        self.switchOn = switchOn
-        self.description = description
-    }
+@objc(Camera)
+class Camera: NSManagedObject {
+
+// Insert code here to add functionality to your managed object subclass
+
 }
