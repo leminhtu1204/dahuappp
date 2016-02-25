@@ -39,7 +39,7 @@ class CameraView {
         let entityCamera = NSEntityDescription.entityForName("Camera", inManagedObjectContext: context)
         let newCamera = Camera(entity: entityCamera!, insertIntoManagedObjectContext: context)
 
-        newCamera.setValue(description, forKey: "cameraDescription")
+        newCamera.setValue(description, forKey: "cameraDiscription")
         newCamera.setValue(url, forKey: "url")
         
         // Create Fetch Request
@@ -55,10 +55,11 @@ class CameraView {
             
             for user in result {
                 if user.valueForKey("email") as? String == user_email_owner {
-                    user.setValue(NSSet(object: newCamera), forKey: "Camera")
                     
+                    user.setValue(NSSet(object: newCamera), forKey: "user_camera")
                     do {
                         try user.managedObjectContext?.save()
+                        print("Assign camera to user - DONE")
                     } catch {
                         let saveError = error as NSError
                         print(saveError)

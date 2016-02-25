@@ -16,9 +16,11 @@ class CreateUserTableViewController: UITableViewController {
     
     @IBOutlet weak var txtFullName: UITextField!
     @IBOutlet weak var txtEmail: UITextField!
+    @IBOutlet weak var txtPassword: UITextField!
     
     @IBAction func btnCancel(sender: AnyObject) {
         // Depending on style of presentation (modal or push presentation), this view controller needs to be dismissed in two different ways.
+        
         let isPresentingInAddMealMode = presentingViewController is UINavigationController
         
         if isPresentingInAddMealMode {
@@ -47,7 +49,7 @@ class CreateUserTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 2
+        return 3
     }
     
     // This method lets you configure a view controller before it's presented.
@@ -71,7 +73,7 @@ class CreateUserTableViewController: UITableViewController {
             insertIntoManagedObjectContext: context)
         
         user!.fullname = txtFullName.text
-        user!.password = "password"
+        user!.password = txtPassword.text
         user!.email = txtEmail.text
         user!.createdDate = NSDate()
         
