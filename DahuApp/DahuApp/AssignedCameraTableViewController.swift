@@ -61,6 +61,7 @@ class AssignedCameraTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("Camera count: \(cameras.count)")
         return cameras.count
     }
     
@@ -79,6 +80,9 @@ class AssignedCameraTableViewController: UITableViewController {
     }
     
     func loadSampleCameras() {
+        print("Load sample cameras")
+        cameras = [CameraView]()
+        
         let camera1 = CameraView(switchOn: false, description: "Camera 1", url: "nhaccuatui.com", user_email_owner: email)
         let camera2 = CameraView(switchOn: false, description: "Camera 2", url: "nhaccuatui.com", user_email_owner: email)
         let camera3 = CameraView(switchOn: false, description: "Camera 3", url: "nhaccuatui", user_email_owner: email)
@@ -96,6 +100,8 @@ class AssignedCameraTableViewController: UITableViewController {
         
         cell.switchOn.on = camera.switchOn
         cell.cameraDescription.text = camera.description
+        
+        print("Camera count: \(cameras.count) Camera: \(camera.description)")
 
         return cell
     }
