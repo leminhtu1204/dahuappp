@@ -65,13 +65,17 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationController!.navigationBarHidden = true
         // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func prepareForUnwind(sender: UIStoryboardSegue) {
+        self.navigationController!.navigationBarHidden = true
     }
     
 

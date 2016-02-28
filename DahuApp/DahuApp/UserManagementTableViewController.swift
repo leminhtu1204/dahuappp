@@ -52,6 +52,7 @@ class UserManagementTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialData()
+        setupNavigation()
     }
 
     override func didReceiveMemoryWarning() {
@@ -197,7 +198,26 @@ class UserManagementTableViewController: UITableViewController {
                 tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
             }
         }
-
-
     }
+    
+    func setupNavigation(){
+        self.navigationController!.navigationBarHidden = false;
+        if let navigationBar = self.navigationController?.navigationBar {
+            let titleFrame = CGRect(x: navigationBar.frame.width/4 + 50, y: 0, width: 200, height: 40)
+            
+            let imageView = UIImageView(frame: CGRect(x: navigationBar.frame.width/4, y: 0, width: 40, height: 40))
+            imageView.contentMode = .ScaleAspectFit
+            // 4
+            let image = UIImage(named: "logo")
+            imageView.image = image
+            
+            let title = UILabel(frame: titleFrame)
+            title.text = "User Management"
+            title.font = title.font.fontWithSize(17)
+
+            navigationBar.addSubview(title)
+            navigationBar.addSubview(imageView)
+        }
+    }
+
 }
