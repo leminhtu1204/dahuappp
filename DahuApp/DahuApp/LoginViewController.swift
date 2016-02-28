@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Alamofire
 
 class LoginViewController: UIViewController {
     @IBOutlet weak var txtUserName: UITextField!
@@ -63,10 +64,30 @@ class LoginViewController: UIViewController {
         return false
     }
     
+    func testAPI() {
+        let headers = [
+            "Content-Type": "application/x-www-form-urlencoded"
+        ]
+        
+        Alamofire.request(.POST, "http://chiasehosting.org/dahua/index.php", parameters: ["action": "login", "email": "khongminhphong@gmail.com2", "password": "123456"], headers: headers)
+            .responseJSON { response in
+                print(response.request)  // original URL request
+                print(response.response) // URL response
+//                print(response.data)     // server data
+                print(response.result)   // result of response serialization
+                
+                if let JSON = response.result.value {
+                    print("JSON: \(JSON)")
+                }
+        }
+
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController!.navigationBarHidden = true
         // Do any additional setup after loading the view.
+        testAPI()
     }
 
     override func didReceiveMemoryWarning() {
