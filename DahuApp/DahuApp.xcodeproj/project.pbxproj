@@ -28,6 +28,8 @@
 		480BBE5A1C7CB1260041A980 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BBE591C7CB1260041A980 /* CameraView.swift */; };
 		48B80D9C1C82E95A0006AA2B /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B80D8F1C82E92B0006AA2B /* Alamofire.framework */; };
 		48B80D9D1C82E95A0006AA2B /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48B80D8F1C82E92B0006AA2B /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		48E905801C833A9C002287FA /* UserObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E9057F1C833A9C002287FA /* UserObject.swift */; };
+		48E905881C833FD0002287FA /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E905871C833FD0002287FA /* AppUtility.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +128,8 @@
 		480BBE571C7CA7680041A980 /* CameraTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraTableViewCell.swift; sourceTree = "<group>"; };
 		480BBE591C7CB1260041A980 /* CameraView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		48B80D841C82E92B0006AA2B /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = ../Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
+		48E9057F1C833A9C002287FA /* UserObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserObject.swift; sourceTree = "<group>"; };
+		48E905871C833FD0002287FA /* AppUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,6 +224,8 @@
 				0564E9761C79A8E00026ABC6 /* UserProfile+CoreDataProperties.swift */,
 				0564E9771C79A8E00026ABC6 /* UserProfile.swift */,
 				480BBE591C7CB1260041A980 /* CameraView.swift */,
+				48E905871C833FD0002287FA /* AppUtility.swift */,
+				48E9057F1C833A9C002287FA /* UserObject.swift */,
 			);
 			name = Entity;
 			sourceTree = "<group>";
@@ -371,6 +377,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				480BBE581C7CA7680041A980 /* CameraTableViewCell.swift in Sources */,
+				48E905801C833A9C002287FA /* UserObject.swift in Sources */,
+				48E905881C833FD0002287FA /* AppUtility.swift in Sources */,
 				0564E9781C79A8E00026ABC6 /* UserProfile+CoreDataProperties.swift in Sources */,
 				0532AAB01C55205F00711AF5 /* LoginViewController.swift in Sources */,
 				0564E9791C79A8E00026ABC6 /* UserProfile.swift in Sources */,
