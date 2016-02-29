@@ -15,36 +15,18 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var btnPassword: UITextField!
     
     @IBAction func btnSignIn(sender: AnyObject) {
-//        if (txtUserName.text == "admin" && btnPassword.text == "admin"){
-//            self.performSegueWithIdentifier("adminSegue", sender: sender)
-//        } else {
-//            if (checkUser()) {
-//                self.performSegueWithIdentifier("userSegue", sender: sender)
-//            } else {
-//                raiseAlert()
-//            }
-//        }
-        
         let userObject = AppUtility.loginUser(txtUserName.text!, pass: btnPassword.text!) as UserObject
         
-        print("User Return \(userObject.email)")
-        
-        print("user input \(txtUserName.text)")
-        print("password input \(btnPassword.text)")
+        if (userObject.email == "") {
+            raiseAlert()
+        } else {
+            if (userObject.isAdmin) {
+                self.performSegueWithIdentifier("adminSegue", sender: sender)
+            } else {
+                self.performSegueWithIdentifier("userSegue", sender: sender)
 
-        
-//        if (txtUserName.text != userObject.email || btnPassword.text != userObject.password) {
-//            raiseAlert()
-//        } else {
-//            if (userObject.isAdmin) {
-//                self.performSegueWithIdentifier("adminSegue", sender: sender)
-//            } else {
-//                self.performSegueWithIdentifier("userSegue", sender: sender)
-//
-//            }
-//        }
-        
-        print(" User object: \(userObject.email)")
+            }
+        }
     }
     
     func raiseAlert() {
@@ -85,25 +67,6 @@ class LoginViewController: UIViewController {
         return false
     }
     
-    func testAPI() {
-        let headers = [
-            "Content-Type": "application/x-www-form-urlencoded"
-        ]
-        
-        Alamofire.request(.POST, "http://chiasehosting.org/dahua/index.php", parameters: ["action": "login", "email": "khongminhphong@gmail.com23", "password": "1234567"], headers: headers)
-            .responseJSON { response in
-                print(response.request)  // original URL request
-                print(response.response) // URL response
-//                print(response.data)     // server data
-                print(response.result)   // result of response serialization
-                
-                if let JSON = response.result.value {
-                    print("JSON: \(JSON)")
-                    AppUtility.parseToUserObject(JSON)
-                }
-        }
-
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

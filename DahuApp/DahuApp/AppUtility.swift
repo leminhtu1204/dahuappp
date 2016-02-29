@@ -55,17 +55,14 @@ class AppUtility {
         if let data = json["data"] as? NSDictionary {
             if let userDetail = data.valueForKey("UserDetail") as? NSDictionary {
                 if let fullName = userDetail.valueForKey("FullName") as? String {
-                    print(fullName)
                     userObject.fullName = fullName
                 }
                 
                 if let email = userDetail.valueForKey("email") as? String {
-                    print(email)
                     userObject.email = email
                 }
                 
                 if let id = userDetail.valueForKey("id") as? String {
-                    print(id)
                     if let idInt = Int(id) {
                         userObject.id = idInt
                     }
@@ -73,7 +70,6 @@ class AppUtility {
                 }
 
                 if let isAdmin = userDetail.valueForKey("isAdmin") as? String {
-                    print(isAdmin)
                     if isAdmin == "0" {
                         userObject.isAdmin = false
                     } else {
@@ -82,16 +78,14 @@ class AppUtility {
                 }
 
                 if let password = userDetail.valueForKey("password") as? String {
-                    print(password)
                     userObject.password = password
                 }
             }
             
         }
         
-        // CameraDetail
+        // CameraDetail - TODO
     
-        print("User in parse to object: \(userObject.email)")
         return userObject
     }
     
@@ -102,21 +96,22 @@ class AppUtility {
         
         var userObject = UserObject()
         
+        let semaphore = dispatch_semaphore_create(0)
+        
         Alamofire.request(.POST, "http://chiasehosting.org/dahua/index.php", parameters: ["action": "login", "email": "\(user)", "password": "\(pass)"], headers: headers)
             .responseJSON { response in
-                print(response.request)  // original URL request
-                print(response.response) // URL response
-                //                print(response.data)     // server data
-                print(response.result)   // result of response serialization
-                
                 if let JSON = response.result.value {
-//                    print("JSON: \(JSON)")
+                    print("JSON: \(JSON)")
                     userObject = parseToUserObject(JSON)
-                    print("User email in response: \(userObject.email)")
+                    dispatch_semaphore_signal(semaphore)
                 }
         }
         
-        print("User email in login User: \(userObject.email)")
+        // waiting for the resquest to complete
+        while dispatch_semaphore_wait(semaphore, DISPATCH_TIME_NOW) != 0 {
+            NSRunLoop.currentRunLoop().runMode(NSDefaultRunLoopMode, beforeDate: NSDate(timeIntervalSinceNow: 10))
+        }
+        
         return userObject
     }
     
