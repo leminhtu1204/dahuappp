@@ -188,4 +188,35 @@ class AppUtility {
         return userObject
     }
     
+    class func deleleUser(id: Int) -> Bool {
+        var isSuccessfully: Bool
+        isSuccessfully = true
+        
+        let semaphore = dispatch_semaphore_create(0)
+        
+        let headers = [
+            "Content-Type": "application/x-www-form-urlencoded"
+        ]
+        
+        Alamofire.request(.POST, "http://chiasehosting.org/dahua/index.php", parameters: ["action": "deleteuser", "id": "\(id)"], headers: headers)
+            .responseJSON { response in
+                if let JSON = response.result.value {
+                    if let code = JSON["code"] as? String {
+                        if code == "1" {
+                            isSuccessfully = true
+                        } else {
+                            isSuccessfully = false
+                        }
+                    }
+                    dispatch_semaphore_signal(semaphore)
+                }
+        }
+        
+        // waiting for the resquest to complete
+        while dispatch_semaphore_wait(semaphore, DISPATCH_TIME_NOW) != 0 {
+            NSRunLoop.currentRunLoop().runMode(NSDefaultRunLoopMode, beforeDate: NSDate(timeIntervalSinceNow: 10))
+        }
+        
+        return isSuccessfully
+    }
 }

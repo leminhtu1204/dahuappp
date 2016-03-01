@@ -48,6 +48,11 @@ class UserManagementTableViewController: UITableViewController {
 //        } catch let error as NSError {
 //            print("Could not fetch \(error), \(error.userInfo)")
 //        }
+        let selectedUser = loginUser.userList![index]
+        
+        let isSuccessfully = AppUtility.deleleUser(selectedUser.id!) as Bool
+        print("Is user deleted? - \(isSuccessfully)")
+        loginUser.userList?.removeAtIndex(index)
     }
     
     override func viewDidLoad() {
