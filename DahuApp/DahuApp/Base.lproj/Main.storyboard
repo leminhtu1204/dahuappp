@@ -345,6 +345,68 @@
                                             </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="SyO-3n-QCy">
+                                        <rect key="frame" x="0.0" y="196" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SyO-3n-QCy" id="LqL-8B-eSK">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Is Admin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="osy-ZD-l84">
+                                                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="73" id="Wsq-j8-GZF"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="Wsq-j8-GZF"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <variation key="widthClass=compact">
+                                                        <mask key="constraints">
+                                                            <include reference="Wsq-j8-GZF"/>
+                                                        </mask>
+                                                    </variation>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Tse-pf-WZ1">
+                                                    <rect key="frame" x="-25" y="-15" width="51" height="31"/>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Tse-pf-WZ1" firstAttribute="leading" secondItem="osy-ZD-l84" secondAttribute="trailing" constant="8" symbolic="YES" id="HN9-s7-x6u"/>
+                                                <constraint firstItem="osy-ZD-l84" firstAttribute="leading" secondItem="LqL-8B-eSK" secondAttribute="leadingMargin" id="Xg4-5f-Laf"/>
+                                                <constraint firstItem="Tse-pf-WZ1" firstAttribute="centerY" secondItem="osy-ZD-l84" secondAttribute="centerY" id="hJO-pA-neY"/>
+                                                <constraint firstItem="Tse-pf-WZ1" firstAttribute="centerY" secondItem="LqL-8B-eSK" secondAttribute="centerY" id="yZK-Up-5sy"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="subviews">
+                                                    <exclude reference="osy-ZD-l84"/>
+                                                    <exclude reference="Tse-pf-WZ1"/>
+                                                </mask>
+                                                <mask key="constraints">
+                                                    <exclude reference="Xg4-5f-Laf"/>
+                                                    <exclude reference="HN9-s7-x6u"/>
+                                                    <exclude reference="hJO-pA-neY"/>
+                                                    <exclude reference="yZK-Up-5sy"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="widthClass=compact">
+                                                <mask key="subviews">
+                                                    <include reference="osy-ZD-l84"/>
+                                                    <include reference="Tse-pf-WZ1"/>
+                                                </mask>
+                                                <mask key="constraints">
+                                                    <include reference="Xg4-5f-Laf"/>
+                                                    <include reference="HN9-s7-x6u"/>
+                                                    <include reference="hJO-pA-neY"/>
+                                                    <include reference="yZK-Up-5sy"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -370,6 +432,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="btnSaveData" destination="NoZ-Xx-1Qj" id="j9Z-p6-O0o"/>
+                        <outlet property="isAdminSwitch" destination="Tse-pf-WZ1" id="vr5-Wz-Thn"/>
                         <outlet property="txtEmail" destination="XPG-fa-pDJ" id="KAw-ks-cSA"/>
                         <outlet property="txtFullName" destination="oyi-wf-BJf" id="Pf5-Un-M8v"/>
                         <outlet property="txtPassword" destination="b1p-0L-GVL" id="Oyx-Tb-zw7"/>

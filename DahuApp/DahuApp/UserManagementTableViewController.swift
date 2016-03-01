@@ -12,42 +12,9 @@ import CoreData
 class UserManagementTableViewController: UITableViewController {
     
     var loginUser = UserObject()
- //   var users = [NSManagedObject]();
-    
-//    func initialData(){
-//        //1
-//        let appDelegate =
-//        UIApplication.sharedApplication().delegate as! AppDelegate
-//        
-//        let managedContext = appDelegate.managedObjectContext
-//        
-//        //2
-//        let fetchRequest = NSFetchRequest(entityName: "UserProfile")
-//        
-//        //3
-//        do {
-//            let results =
-//            try managedContext.executeFetchRequest(fetchRequest)
-//            users = results as! [NSManagedObject]
-//        } catch let error as NSError {
-//            print("Could not fetch \(error), \(error.userInfo)")
-//        }
-//    }
+
     
     func deleteUser(index: Int){
-//        let appDelegate =
-//        UIApplication.sharedApplication().delegate as! AppDelegate
-//        
-//        let managedContext = appDelegate.managedObjectContext
-//        managedContext.deleteObject(users[index] as NSManagedObject)
-//        users.removeAtIndex(index)
-//                
-//        //3
-//        do {
-//            try managedContext.save()
-//        } catch let error as NSError {
-//            print("Could not fetch \(error), \(error.userInfo)")
-//        }
         let selectedUser = loginUser.userList![index]
         
         let isSuccessfully = AppUtility.deleleUser(selectedUser.id!) as Bool
@@ -57,7 +24,6 @@ class UserManagementTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        initialData()
         setupNavigation()
     }
 
@@ -69,21 +35,18 @@ class UserManagementTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return (loginUser.userList?.count)!
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
-        
+       
         let user = loginUser.userList![indexPath.row]
-        
         cell.textLabel!.text = user.fullName
         
         return cell
@@ -99,19 +62,6 @@ class UserManagementTableViewController: UITableViewController {
     
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        /*
-        print("Edit style")
-        print(editingStyle)
-        
-        if editingStyle == .Delete {
-        deleteUser(indexPath.row)
-        // Delete the row from the data source
-        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        
-        } else if editingStyle == .Insert {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }
-        */
     }
     
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
@@ -191,7 +141,7 @@ class UserManagementTableViewController: UITableViewController {
     }
     
     @IBAction func prepareForUnwind(sender: UIStoryboardSegue) {
-    if let sourceViewController = sender.sourceViewController as? CreateUserTableViewController, user = sourceViewController.user {
+//    if let sourceViewController = sender.sourceViewController as? CreateUserTableViewController, user = sourceViewController.user {
 //            if let selectedIndexPath = tableView.indexPathForSelectedRow {
 //                // Update an existing meal.
 //                users[selectedIndexPath.row] = user
@@ -202,7 +152,13 @@ class UserManagementTableViewController: UITableViewController {
 //                users.append(user)
 //                tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
 //            }
+//        }
+        if let createViewController = sender.sourceViewController as? CreateUserTableViewController {
+            if let newUser = createViewController.newUser as? UserObject {
+                print(newUser.fullName)
+            }
         }
+        
     }
     
     func setupNavigation(){
