@@ -14,6 +14,8 @@ class UserObject {
     var email: String
     var isAdmin: Bool
     var password: String
+    var cameras: [CameraObject]?
+    var userList: [UserObject]?
     
     init() {
         fullName = ""

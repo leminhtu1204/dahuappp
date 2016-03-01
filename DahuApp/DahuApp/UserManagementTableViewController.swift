@@ -11,47 +11,48 @@ import CoreData
 
 class UserManagementTableViewController: UITableViewController {
     
-    var users = [NSManagedObject]();
+    var loginUser = UserObject()
+ //   var users = [NSManagedObject]();
     
-    func initialData(){
-        //1
-        let appDelegate =
-        UIApplication.sharedApplication().delegate as! AppDelegate
-        
-        let managedContext = appDelegate.managedObjectContext
-        
-        //2
-        let fetchRequest = NSFetchRequest(entityName: "UserProfile")
-        
-        //3
-        do {
-            let results =
-            try managedContext.executeFetchRequest(fetchRequest)
-            users = results as! [NSManagedObject]
-        } catch let error as NSError {
-            print("Could not fetch \(error), \(error.userInfo)")
-        }
-    }
+//    func initialData(){
+//        //1
+//        let appDelegate =
+//        UIApplication.sharedApplication().delegate as! AppDelegate
+//        
+//        let managedContext = appDelegate.managedObjectContext
+//        
+//        //2
+//        let fetchRequest = NSFetchRequest(entityName: "UserProfile")
+//        
+//        //3
+//        do {
+//            let results =
+//            try managedContext.executeFetchRequest(fetchRequest)
+//            users = results as! [NSManagedObject]
+//        } catch let error as NSError {
+//            print("Could not fetch \(error), \(error.userInfo)")
+//        }
+//    }
     
     func deleteUser(index: Int){
-        let appDelegate =
-        UIApplication.sharedApplication().delegate as! AppDelegate
-        
-        let managedContext = appDelegate.managedObjectContext
-        managedContext.deleteObject(users[index] as NSManagedObject)
-        users.removeAtIndex(index)
-                
-        //3
-        do {
-            try managedContext.save()
-        } catch let error as NSError {
-            print("Could not fetch \(error), \(error.userInfo)")
-        }
+//        let appDelegate =
+//        UIApplication.sharedApplication().delegate as! AppDelegate
+//        
+//        let managedContext = appDelegate.managedObjectContext
+//        managedContext.deleteObject(users[index] as NSManagedObject)
+//        users.removeAtIndex(index)
+//                
+//        //3
+//        do {
+//            try managedContext.save()
+//        } catch let error as NSError {
+//            print("Could not fetch \(error), \(error.userInfo)")
+//        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initialData()
+//        initialData()
         setupNavigation()
     }
 
@@ -69,17 +70,16 @@ class UserManagementTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return users.count
+        return (loginUser.userList?.count)!
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
         
-        let user = users[indexPath.row]
+        let user = loginUser.userList![indexPath.row]
         
-        cell.textLabel!.text =
-            user.valueForKey("fullname") as? String
+        cell.textLabel!.text = user.fullName
         
         return cell
     }
@@ -165,38 +165,38 @@ class UserManagementTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "assignCameras" {
-            print("Click to assign cameras")
-            let assignCameraTableViewController = segue.destinationViewController as! AssignedCameraTableViewController
-            
-            print(sender)
-            print("selected cell")
-            print(self.tableView.indexPathForSelectedRow?.row)
-            
-            if let selectedUserCell = sender as? UITableViewCell {
-                print("Click selected user to assign")
-                let indexPath = tableView.indexPathForCell(selectedUserCell)!
-                let selectedUser = users[indexPath.row]
-                print(selectedUser.valueForKey("email"))
-                assignCameraTableViewController.email = (selectedUser.valueForKey("email") as? String)!
-
-            }
-        }
-    
+//        if segue.identifier == "assignCameras" {
+//            print("Click to assign cameras")
+//            let assignCameraTableViewController = segue.destinationViewController as! AssignedCameraTableViewController
+//            
+//            print(sender)
+//            print("selected cell")
+//            print(self.tableView.indexPathForSelectedRow?.row)
+//            
+//            if let selectedUserCell = sender as? UITableViewCell {
+//                print("Click selected user to assign")
+//                let indexPath = tableView.indexPathForCell(selectedUserCell)!
+//                let selectedUser = users[indexPath.row]
+//                print(selectedUser.valueForKey("email"))
+//                assignCameraTableViewController.email = (selectedUser.valueForKey("email") as? String)!
+//
+//            }
+//        }
+//    
     }
     
     @IBAction func prepareForUnwind(sender: UIStoryboardSegue) {
     if let sourceViewController = sender.sourceViewController as? CreateUserTableViewController, user = sourceViewController.user {
-            if let selectedIndexPath = tableView.indexPathForSelectedRow {
-                // Update an existing meal.
-                users[selectedIndexPath.row] = user
-                tableView.reloadRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .None)
-            } else {
-                // Add a new meal.
-                let newIndexPath = NSIndexPath(forRow: users.count, inSection: 0)
-                users.append(user)
-                tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
-            }
+//            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+//                // Update an existing meal.
+//                users[selectedIndexPath.row] = user
+//                tableView.reloadRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .None)
+//            } else {
+//                // Add a new meal.
+//                let newIndexPath = NSIndexPath(forRow: users.count, inSection: 0)
+//                users.append(user)
+//                tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
+//            }
         }
     }
     

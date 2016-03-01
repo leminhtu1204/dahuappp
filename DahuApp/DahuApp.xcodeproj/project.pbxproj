@@ -30,6 +30,7 @@
 		48B80D9D1C82E95A0006AA2B /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48B80D8F1C82E92B0006AA2B /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		48E905801C833A9C002287FA /* UserObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E9057F1C833A9C002287FA /* UserObject.swift */; };
 		48E905881C833FD0002287FA /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E905871C833FD0002287FA /* AppUtility.swift */; };
+		48E9058A1C85D329002287FA /* CameraObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E905891C85D329002287FA /* CameraObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,6 +131,7 @@
 		48B80D841C82E92B0006AA2B /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = ../Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		48E9057F1C833A9C002287FA /* UserObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserObject.swift; sourceTree = "<group>"; };
 		48E905871C833FD0002287FA /* AppUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
+		48E905891C85D329002287FA /* CameraObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,8 +226,9 @@
 				0564E9761C79A8E00026ABC6 /* UserProfile+CoreDataProperties.swift */,
 				0564E9771C79A8E00026ABC6 /* UserProfile.swift */,
 				480BBE591C7CB1260041A980 /* CameraView.swift */,
-				48E905871C833FD0002287FA /* AppUtility.swift */,
 				48E9057F1C833A9C002287FA /* UserObject.swift */,
+				48E905891C85D329002287FA /* CameraObject.swift */,
+				48E905871C833FD0002287FA /* AppUtility.swift */,
 			);
 			name = Entity;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 				0532AAB51C55277100711AF5 /* AssignedCameraCollectionViewController.swift in Sources */,
 				0532AA971C5483D000711AF5 /* AppDelegate.swift in Sources */,
 				0564E97B1C79B3390026ABC6 /* UserManagementTableViewController.swift in Sources */,
+				48E9058A1C85D329002287FA /* CameraObject.swift in Sources */,
 				057223F61C79773300AB8F01 /* CreateUserTableViewController.swift in Sources */,
 				0564E97D1C79D3AF0026ABC6 /* AssignedCameraTableViewController.swift in Sources */,
 				0564E9811C79DFA80026ABC6 /* CameraDetailViewController.swift in Sources */,

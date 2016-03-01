@@ -11,16 +11,19 @@ import CoreData
 import Alamofire
 
 class LoginViewController: UIViewController {
+    var loginUser = UserObject()
+    
     @IBOutlet weak var txtUserName: UITextField!
     @IBOutlet weak var btnPassword: UITextField!
     
     @IBAction func btnSignIn(sender: AnyObject) {
-        let userObject = AppUtility.loginUser(txtUserName.text!, pass: btnPassword.text!) as UserObject
+     //   let userObject = AppUtility.loginUser(txtUserName.text!, pass: btnPassword.text!) as UserObject
+        loginUser = AppUtility.loginUser(txtUserName.text!, pass: btnPassword.text!) as UserObject
         
-        if (userObject.email == "") {
+        if (loginUser.email == "") {
             raiseAlert()
         } else {
-            if (userObject.isAdmin) {
+            if (loginUser.isAdmin) {
                 self.performSegueWithIdentifier("adminSegue", sender: sender)
             } else {
                 self.performSegueWithIdentifier("userSegue", sender: sender)
@@ -85,14 +88,16 @@ class LoginViewController: UIViewController {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "adminSegue" {
+            let userManagementTableViewController = segue.destinationViewController as! UserManagementTableViewController
+            userManagementTableViewController.loginUser = loginUser
+        }
     }
-    */
+    
 
 }

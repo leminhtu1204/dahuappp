@@ -43,7 +43,7 @@ class AppUtility {
     */
     class func parseToUserObject(json: AnyObject) -> UserObject {
         let userObject = UserObject()
-    
+        
         if let code = json["code"] as? String {
             if code == "-1" {
                 print("Wrong email or password")
@@ -51,8 +51,9 @@ class AppUtility {
             }
         }
         
-        // UserDetail
         if let data = json["data"] as? NSDictionary {
+            
+            // UserDetail
             if let userDetail = data.valueForKey("UserDetail") as? NSDictionary {
                 if let fullName = userDetail.valueForKey("FullName") as? String {
                     userObject.fullName = fullName
@@ -82,10 +83,82 @@ class AppUtility {
                 }
             }
             
+            // CameraDetail
+            if let cameras = data.valueForKey("CameraDetail") as? NSArray {
+                if cameras.count > 0 {
+                    userObject.cameras = [CameraObject]()
+                }
+                
+                for camera in cameras {
+                    let newCamera = CameraObject()
+                    if let name = camera.valueForKey("camName") as? String {
+                        newCamera.name = name
+                    }
+                    
+                    if let id = camera.valueForKey("camId") as? String {
+                        if let idInt = Int(id) {
+                            newCamera.id = idInt
+                        }
+
+                    }
+                    
+                    if let link = camera.valueForKey("camLink") as? String {
+                        newCamera.link = link
+                    }
+
+                    if let fromDate = camera.valueForKey("cuFrom") as? String {
+                        newCamera.fromDate = fromDate
+                    }
+
+                    if let toDate = camera.valueForKey("cuTo") as? String {
+                        newCamera.toDate = toDate
+                    }
+
+                    userObject.cameras?.append(newCamera)
+                }
+            }
+            
+            
+            // UserList
+            if let userList = data.valueForKey("UserList") as? NSArray {
+                if userList.count > 0 {
+                    userObject.userList = [UserObject]()
+                }
+                
+                for user in userList {
+                    let newUser = UserObject()
+                    if let name = user.valueForKey("fullName") as? String {
+                        newUser.fullName = name
+                    }
+                    
+                    if let email = user.valueForKey("email") as? String {
+                        newUser.email = email
+                    }
+                    
+                    if let id = user.valueForKey("id") as? String {
+                        if let idInt = Int(id) {
+                            newUser.id = idInt
+                        }
+                    }
+                    
+                    if let isAdmin = user.valueForKey("isAdmin") as? String {
+                        if isAdmin == "0" {
+                            newUser.isAdmin = false
+                        } else {
+                            newUser.isAdmin = true
+                        }
+
+                    }
+                    
+                    if let password = user.valueForKey("password") as? String {
+                        newUser.password = password
+                    }
+                    
+                    userObject.userList?.append(newUser)
+                }
+            }
         }
         
-        // CameraDetail - TODO
-    
         return userObject
     }
     
