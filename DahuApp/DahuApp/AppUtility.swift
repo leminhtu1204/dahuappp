@@ -259,4 +259,45 @@ class AppUtility {
         
         return newId
     }
+    
+    class func editUser(editingUser: UserObject) -> Int {
+        var code: Int
+        code = -1
+        let semaphore = dispatch_semaphore_create(0)
+        
+        let headers = [
+            "Content-Type": "application/x-www-form-urlencoded"
+        ]
+        
+        var isAdmin = 0
+        if editingUser.isAdmin==true {
+            isAdmin = 1
+        }
+        
+        Alamofire.request(.POST, "http://chiasehosting.org/dahua/index.php", parameters: ["action": "updateuser",
+            "email": "\(editingUser.email)",
+            "password": "\(editingUser.password)",
+            "fullName": "\(editingUser.fullName)",
+            "isAdmin": "\(isAdmin)",
+            "id": "\(editingUser.id)"
+            ], headers: headers)
+            .responseJSON { response in
+                if let JSON = response.result.value {
+                    if let result = JSON.valueForKey("code") as? String {
+                        if let resultInt = Int(result) {
+                            code = resultInt
+                        }
+                    }
+                    dispatch_semaphore_signal(semaphore)
+                }
+        }
+        
+        // waiting for the resquest to complete
+        while dispatch_semaphore_wait(semaphore, DISPATCH_TIME_NOW) != 0 {
+            NSRunLoop.currentRunLoop().runMode(NSDefaultRunLoopMode, beforeDate: NSDate(timeIntervalSinceNow: 10))
+        }
+        
+        return code
+    }
+
 }

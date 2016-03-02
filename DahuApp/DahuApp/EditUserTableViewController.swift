@@ -19,6 +19,13 @@ class EditUserTableViewController: UITableViewController {
     }
     
     @IBAction func saveEditUser(sender: AnyObject) {
+        editingUser.fullName = fullNametxt.text!
+        editingUser.password = newPasswordTxt.text!
+        editingUser.isAdmin = isAdminSwitch.on
+        
+        let result = AppUtility.editUser(editingUser)
+        print("Edit user - Result code: \(result)")
+        
         backToPrevious()
     }
     

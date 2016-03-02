@@ -13,6 +13,8 @@ class UserManagementTableViewController: UITableViewController {
     
     var loginUser = UserObject()
     var selectedUser = UserObject()
+    var selectedRow = 0 as Int
+    var selectedIndexPath: NSIndexPath?
     
     func deleteUser(index: Int){
         let selectedUser = loginUser.userList![index]
@@ -67,6 +69,8 @@ class UserManagementTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         let edit = UITableViewRowAction(style: .Normal, title: "Edit") { action, index in
             self.selectedUser = self.loginUser.userList![indexPath.row]
+            self.selectedRow = indexPath.row
+            self.selectedIndexPath = indexPath
             self.performSegueWithIdentifier("editUserSegue", sender: self)
         }
         edit.backgroundColor = UIColor.blueColor()
@@ -159,6 +163,12 @@ class UserManagementTableViewController: UITableViewController {
             }
         }
         
+        if let editUserController = sender.sourceViewController as? EditUserTableViewController {
+            if let editingUser = editUserController.editingUser as? UserObject {
+                loginUser.userList![selectedRow] = editingUser
+                tableView.reloadRowsAtIndexPaths([selectedIndexPath!], withRowAnimation: .None)
+            }
+        }
     }
     
     func setupNavigation(){
