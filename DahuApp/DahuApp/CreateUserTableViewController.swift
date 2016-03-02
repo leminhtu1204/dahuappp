@@ -62,30 +62,6 @@ class CreateUserTableViewController: UITableViewController {
     }
 
     func insertUser(){
-    
-//        let appDel : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-//    
-//        let context : NSManagedObjectContext = appDel.managedObjectContext
-//        
-//        let entityDescription =
-//        NSEntityDescription.entityForName("UserProfile",
-//            inManagedObjectContext: context)
-//        
-//        user = UserProfile(entity: entityDescription!,
-//            insertIntoManagedObjectContext: context)
-//        
-//        user!.fullname = txtFullName.text
-//        user!.password = txtPassword.text
-//        user!.email = txtEmail.text
-//        user!.createdDate = NSDate()
-//        
-//        do{
-//             try context.save()
-//            
-//        } catch {
-//            print("error")
-//        }
-        
         newUser.fullName =  txtFullName.text!
         newUser.password = txtPassword.text!
         newUser.email = txtEmail.text!

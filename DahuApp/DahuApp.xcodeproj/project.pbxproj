@@ -26,6 +26,7 @@
 		4801CAE91C7F587E00706B77 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4801CAE71C7F587E00706B77 /* Camera.swift */; };
 		480BBE581C7CA7680041A980 /* CameraTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BBE571C7CA7680041A980 /* CameraTableViewCell.swift */; };
 		480BBE5A1C7CB1260041A980 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BBE591C7CB1260041A980 /* CameraView.swift */; };
+		489FC6591C87456B00DCCAD8 /* EditUserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489FC6581C87456B00DCCAD8 /* EditUserTableViewController.swift */; };
 		48B80D9C1C82E95A0006AA2B /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B80D8F1C82E92B0006AA2B /* Alamofire.framework */; };
 		48B80D9D1C82E95A0006AA2B /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48B80D8F1C82E92B0006AA2B /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		48E905801C833A9C002287FA /* UserObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E9057F1C833A9C002287FA /* UserObject.swift */; };
@@ -128,6 +129,7 @@
 		4801CAE71C7F587E00706B77 /* Camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		480BBE571C7CA7680041A980 /* CameraTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraTableViewCell.swift; sourceTree = "<group>"; };
 		480BBE591C7CB1260041A980 /* CameraView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		489FC6581C87456B00DCCAD8 /* EditUserTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditUserTableViewController.swift; sourceTree = "<group>"; };
 		48B80D841C82E92B0006AA2B /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = ../Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		48E9057F1C833A9C002287FA /* UserObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserObject.swift; sourceTree = "<group>"; };
 		48E905871C833FD0002287FA /* AppUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				057223F51C79773300AB8F01 /* CreateUserTableViewController.swift */,
+				489FC6581C87456B00DCCAD8 /* EditUserTableViewController.swift */,
 				0564E97A1C79B3390026ABC6 /* UserManagementTableViewController.swift */,
 				0564E97C1C79D3AF0026ABC6 /* AssignedCameraTableViewController.swift */,
 				0564E97E1C79D73D0026ABC6 /* ConfigDateTableViewController.swift */,
@@ -391,6 +394,7 @@
 				48E9058A1C85D329002287FA /* CameraObject.swift in Sources */,
 				057223F61C79773300AB8F01 /* CreateUserTableViewController.swift in Sources */,
 				0564E97D1C79D3AF0026ABC6 /* AssignedCameraTableViewController.swift in Sources */,
+				489FC6591C87456B00DCCAD8 /* EditUserTableViewController.swift in Sources */,
 				0564E9811C79DFA80026ABC6 /* CameraDetailViewController.swift in Sources */,
 				4801CAE81C7F587E00706B77 /* Camera+CoreDataProperties.swift in Sources */,
 				4801CAE91C7F587E00706B77 /* Camera.swift in Sources */,

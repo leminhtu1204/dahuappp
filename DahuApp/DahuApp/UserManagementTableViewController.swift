@@ -12,7 +12,7 @@ import CoreData
 class UserManagementTableViewController: UITableViewController {
     
     var loginUser = UserObject()
-
+    var selectedUser = UserObject()
     
     func deleteUser(index: Int){
         let selectedUser = loginUser.userList![index]
@@ -66,18 +66,12 @@ class UserManagementTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         let edit = UITableViewRowAction(style: .Normal, title: "Edit") { action, index in
-            print(action)
-            print(index)
-            print("edit button tapped")
-            let editUseViewController = self.storyboard?.instantiateViewControllerWithIdentifier("editUserViewController") as! UITableViewController
-            self.navigationController?.pushViewController(editUseViewController, animated: true)
+            self.selectedUser = self.loginUser.userList![indexPath.row]
+            self.performSegueWithIdentifier("editUserSegue", sender: self)
         }
         edit.backgroundColor = UIColor.blueColor()
         
         let delete = UITableViewRowAction(style: .Normal, title: "Delete") { action, index in
-            print(action)
-            print(index)
-            print("delete button tapped")
             self.deleteUser(indexPath.row)
             // Delete the row from the data source
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
@@ -138,6 +132,10 @@ class UserManagementTableViewController: UITableViewController {
 //            }
 //        }
 //    
+        if segue.identifier == "editUserSegue" {
+            let editUserTableViewController = segue.destinationViewController as! EditUserTableViewController
+            editUserTableViewController.editingUser = self.selectedUser
+        }
     }
     
     @IBAction func prepareForUnwind(sender: UIStoryboardSegue) {
