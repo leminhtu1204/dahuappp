@@ -219,4 +219,44 @@ class AppUtility {
         
         return isSuccessfully
     }
+    
+    class func addUser(newUser: UserObject) -> Int {
+        var newId: Int
+        newId = -1
+        
+        let semaphore = dispatch_semaphore_create(0)
+        
+        let headers = [
+            "Content-Type": "application/x-www-form-urlencoded"
+        ]
+        
+        var isAdmin = 0
+        if newUser.isAdmin==true {
+            isAdmin = 1
+        }
+        
+        Alamofire.request(.POST, "http://chiasehosting.org/dahua/index.php", parameters: ["action": "adduser", "email": "\(newUser.email)", "password": "\(newUser.password)"
+            ,"fullName": "\(newUser.fullName)", "isAdmin": "\(isAdmin)"], headers: headers)
+            .responseJSON { response in
+                if let JSON = response.result.value {
+                    if let data = JSON.valueForKey("data") as? NSDictionary {
+                        if let userDetail = data.valueForKey("UserDetail") as? NSDictionary {
+                            if let id = userDetail.valueForKey("id") as? String {
+                                if let idInt = Int(id) {
+                                    newId = idInt
+                                }
+                            }
+                        }
+                    }
+                    dispatch_semaphore_signal(semaphore)
+                }
+        }
+        
+        // waiting for the resquest to complete
+        while dispatch_semaphore_wait(semaphore, DISPATCH_TIME_NOW) != 0 {
+            NSRunLoop.currentRunLoop().runMode(NSDefaultRunLoopMode, beforeDate: NSDate(timeIntervalSinceNow: 10))
+        }
+        
+        return newId
+    }
 }

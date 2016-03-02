@@ -155,7 +155,9 @@ class UserManagementTableViewController: UITableViewController {
 //        }
         if let createViewController = sender.sourceViewController as? CreateUserTableViewController {
             if let newUser = createViewController.newUser as? UserObject {
-                print(newUser.fullName)
+                let newIndexPath = NSIndexPath(forRow: loginUser.userList!.count, inSection: 0)
+                loginUser.userList?.append(newUser)
+                tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
             }
         }
         

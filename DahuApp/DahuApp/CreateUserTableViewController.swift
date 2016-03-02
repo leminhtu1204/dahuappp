@@ -90,6 +90,8 @@ class CreateUserTableViewController: UITableViewController {
         newUser.password = txtPassword.text!
         newUser.email = txtEmail.text!
         newUser.isAdmin = isAdminSwitch.on
+        let newId = AppUtility.addUser(newUser) as Int
+        newUser.id = newId
     }
 
 }
