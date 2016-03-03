@@ -274,20 +274,22 @@ class AppUtility {
             isAdmin = 1
         }
         
+        let idString = editingUser.id != nil ? "\(editingUser.id!)" : ""
+        
         Alamofire.request(.POST, "http://chiasehosting.org/dahua/index.php", parameters: ["action": "updateuser",
             "email": "\(editingUser.email)",
             "password": "\(editingUser.password)",
             "fullName": "\(editingUser.fullName)",
             "isAdmin": "\(isAdmin)",
-            "id": "\(editingUser.id)"
+            "id": "\(idString))"
             ], headers: headers)
             .responseJSON { response in
                 if let JSON = response.result.value {
-                    if let result = JSON.valueForKey("code") as? String {
-                        if let resultInt = Int(result) {
-                            code = resultInt
-                        }
+                    print(JSON)
+                    if let result = JSON["code"] as? String {
+                        code = Int(result)!
                     }
+                
                     dispatch_semaphore_signal(semaphore)
                 }
         }
