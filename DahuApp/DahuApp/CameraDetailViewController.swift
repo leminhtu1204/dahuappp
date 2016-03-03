@@ -10,12 +10,14 @@ import UIKit
 
 class CameraDetailViewController: UIViewController {
 
+    let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
+
     @IBAction func btnCancel(sender: AnyObject) {
         backToPrevious()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        delegate.setupNavigation((self.navigationController?.navigationBar)!, titleName: "Camera")
         // Do any additional setup after loading the view.
     }
 

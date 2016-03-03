@@ -90,6 +90,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         managedObjectContext.persistentStoreCoordinator = coordinator
         return managedObjectContext
     }()
+    
+    func setupNavigation(navigationBar : UINavigationBar, titleName : String){
+        
+        navigationBar.viewWithTag(1)?.removeFromSuperview()
+        let titleFrame = CGRect(x: navigationBar.frame.width/4 + 50, y: 0, width: 200, height: 40)
+        
+        let imageView = UIImageView(frame: CGRect(x: navigationBar.frame.width/4, y: 0, width: 40, height: 40))
+        imageView.contentMode = .ScaleAspectFit
+        // 4
+        let image = UIImage(named: "logo")
+        imageView.image = image
+        
+        let title = UILabel(frame: titleFrame)
+        title.tag = 1
+        title.text = titleName
+        title.font = title.font.fontWithSize(17)
+        title.textColor  = UIColor.whiteColor()
+        
+        navigationBar.addSubview(title)
+        navigationBar.addSubview(imageView)
+    }
+
 
     // MARK: - Core Data Saving support
 

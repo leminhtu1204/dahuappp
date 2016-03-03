@@ -12,6 +12,7 @@ class AssignedCameraTableViewController: UITableViewController {
     
     var cameras = [CameraView]()
     var email: String = ""
+    let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
     @IBAction func btnSave(sender: AnyObject) {
         print("Save for email: ")
@@ -39,13 +40,7 @@ class AssignedCameraTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
-        // load sample data
+        delegate.setupNavigation((self.navigationController?.navigationBar)!, titleName: "List Camera")
         loadSampleCameras()
     }
 
@@ -106,6 +101,11 @@ class AssignedCameraTableViewController: UITableViewController {
         return cell
     }
     
+    
+    @IBAction func prepareForUnwindAssignedCameraView(sender: UIStoryboardSegue) {
+        delegate.setupNavigation((self.navigationController?.navigationBar)!, titleName: "List Camera")
+    }
+
 
     /*
     // Override to support conditional editing of the table view.

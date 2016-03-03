@@ -19,6 +19,8 @@ class CreateUserTableViewController: UITableViewController {
     @IBOutlet weak var txtFullName: UITextField!
     @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var txtPassword: UITextField!
+    let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
+
     
     @IBAction func btnCancel(sender: AnyObject) {
         // Depending on style of presentation (modal or push presentation), this view controller needs to be dismissed in two different ways.
@@ -36,6 +38,8 @@ class CreateUserTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        delegate.setupNavigation((self.navigationController?.navigationBar)!, titleName: "Create User")
+
     }
 
     override func didReceiveMemoryWarning() {

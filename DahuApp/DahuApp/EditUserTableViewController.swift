@@ -14,6 +14,8 @@ class EditUserTableViewController: UITableViewController {
     @IBOutlet weak var fullNametxt: UITextField!
     @IBOutlet weak var newPasswordTxt: UITextField!
     @IBOutlet weak var isAdminSwitch: UISwitch!
+    let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
+
     @IBAction func cancelEditUser(sender: AnyObject) {
         backToPrevious()
     }
@@ -41,13 +43,7 @@ class EditUserTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
+        delegate.setupNavigation((self.navigationController?.navigationBar)!, titleName: "Edit User")
         fullNametxt.text = editingUser.fullName
         isAdminSwitch.on = editingUser.isAdmin
     }

@@ -12,9 +12,16 @@ private let reuseIdentifier = "Cell"
 
 class AssignedCameraCollectionViewController: UICollectionViewController {
 
+    let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    
+    func initNavigate(){
+        delegate.setupNavigation((self.navigationController?.navigationBar)!, titleName: "List Camera")
+
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        initNavigate()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -59,6 +66,11 @@ class AssignedCameraCollectionViewController: UICollectionViewController {
     
         return cell
     }
+    
+    @IBAction func prepareForUnwind(sender: UIStoryboardSegue) {
+        initNavigate()
+    }
+
 
     // MARK: UICollectionViewDelegate
 
