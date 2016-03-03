@@ -97,6 +97,13 @@ class UserManagementTableViewController: UITableViewController {
             let editUserTableViewController = segue.destinationViewController as! EditUserTableViewController
             editUserTableViewController.editingUser = self.selectedUser
         }
+        
+        if segue.identifier == "assignCameras" {
+      //      let assignedCameraTableViewController = segue.destinationViewController as! AssignedCameraTableViewController
+         //   assignedCameraTableViewController.editingUser = self.selectedUser
+        //    assignedCameraTableViewController.cameras = self.loginUser.cameras
+            
+        }
     }
     
     @IBAction func prepareForUnwind(sender: UIStoryboardSegue) {

@@ -46,6 +46,7 @@ class EditUserTableViewController: UITableViewController {
         delegate.setupNavigation((self.navigationController?.navigationBar)!, titleName: "Edit User")
         fullNametxt.text = editingUser.fullName
         isAdminSwitch.on = editingUser.isAdmin
+        newPasswordTxt.text = editingUser.password
     }
 
     override func didReceiveMemoryWarning() {

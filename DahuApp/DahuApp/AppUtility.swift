@@ -162,6 +162,26 @@ class AppUtility {
         return userObject
     }
     
+    class func parseToCameraObjects(json: AnyObject) -> [CameraObject]? {
+
+        var cameras =  [CameraObject]()
+        
+        if let cameraList = json["data"] as? [AnyObject] {
+            for cam in cameraList {
+                let camera = CameraObject()
+                if let camId = cam.valueForKey("camId") as? String {
+                    if let camIdInt = Int(camId) {
+                        camera.id = camIdInt
+                        print(camIdInt)
+                        cameras.append(camera)
+                    }
+                }
+            }
+        }
+        
+        return cameras
+    }
+    
     class func loginUser(user: String, pass: String) -> UserObject {
         let headers = [
             "Content-Type": "application/x-www-form-urlencoded"
@@ -300,6 +320,34 @@ class AppUtility {
         }
         
         return code
+    }
+    
+    class func getAssignedCameras(editingUser: UserObject) -> [CameraObject]? {
+        var cameras: [CameraObject]?
+        let semaphore = dispatch_semaphore_create(0)
+        
+        let headers = [
+            "Content-Type": "application/x-www-form-urlencoded"
+        ]
+        
+        let idString = editingUser.id != nil ? "\(editingUser.id!)" : ""
+        
+        Alamofire.request(.POST, "http://chiasehosting.org/dahua/index.php", parameters: ["action": "getcams","id": "\(idString))"], headers: headers)
+            .responseJSON { response in
+                if let JSON = response.result.value {
+                    print(JSON)
+                    cameras = parseToCameraObjects(JSON)
+                    
+                    dispatch_semaphore_signal(semaphore)
+                }
+        }
+        
+        // waiting for the resquest to complete
+        while dispatch_semaphore_wait(semaphore, DISPATCH_TIME_NOW) != 0 {
+            NSRunLoop.currentRunLoop().runMode(NSDefaultRunLoopMode, beforeDate: NSDate(timeIntervalSinceNow: 10))
+        }
+        
+        return cameras
     }
 
 }

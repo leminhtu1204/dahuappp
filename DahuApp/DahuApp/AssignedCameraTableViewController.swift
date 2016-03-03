@@ -12,14 +12,13 @@ class AssignedCameraTableViewController: UITableViewController {
     
     var cameras = [CameraView]()
     var email: String = ""
+//    var cameras: [CameraObject]?
+//    var selectedUser: UserObject?
+    
     let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
     @IBAction func btnSave(sender: AnyObject) {
-        print("Save for email: ")
-        print(email)
-        
         saveAssignedCameras()
-        
         backToPrevious()
     }
 
@@ -56,7 +55,6 @@ class AssignedCameraTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("Camera count: \(cameras.count)")
         return cameras.count
     }
     
