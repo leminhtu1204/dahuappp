@@ -51,7 +51,7 @@ class CreateUserTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 3
+        return 4
     }
     
     // This method lets you configure a view controller before it's presented.
