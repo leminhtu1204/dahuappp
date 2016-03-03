@@ -13,6 +13,9 @@ class ConfigDateTableViewController: UITableViewController {
         backToPrevious()
     }
     
+    let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
+
+    
     func backToPrevious(){
         let isPresentingInAddMealMode = presentingViewController is UINavigationController
         
@@ -27,6 +30,7 @@ class ConfigDateTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        delegate.setupNavigation((self.navigationController?.navigationBar)!, titleName: "Camera Setup")
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
