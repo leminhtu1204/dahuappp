@@ -75,10 +75,6 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         self.navigationController!.navigationBarHidden = true
         // Do any additional setup after loading the view.
-        let newUser = UserObject()
-        newUser.id = 12
-        AppUtility.getAssignedCameras(newUser)
-        
     }
 
     override func didReceiveMemoryWarning() {

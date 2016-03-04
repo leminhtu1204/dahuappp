@@ -99,10 +99,12 @@ class UserManagementTableViewController: UITableViewController {
         }
         
         if segue.identifier == "assignCameras" {
-      //      let assignedCameraTableViewController = segue.destinationViewController as! AssignedCameraTableViewController
-         //   assignedCameraTableViewController.editingUser = self.selectedUser
-        //    assignedCameraTableViewController.cameras = self.loginUser.cameras
-            
+            selectedUser = loginUser.userList![(tableView.indexPathForSelectedRow?.row)!]
+            print("Select user for assigning camera: \(selectedUser.email)")
+            let assignedCameraTableViewController = segue.destinationViewController as! AssignedCameraTableViewController
+            assignedCameraTableViewController.selectedUser = selectedUser
+            assignedCameraTableViewController.cameras = loginUser.cameras!
+            assignedCameraTableViewController.assignedCameras = AppUtility.getAssignedCameras(selectedUser)
         }
     }
     

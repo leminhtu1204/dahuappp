@@ -84,35 +84,35 @@ class AppUtility {
             }
             
             // CameraDetail
-            if let cameras = data.valueForKey("CameraDetail") as? NSArray {
+            if let cameras = data.valueForKey("Camera") as? NSArray {
                 if cameras.count > 0 {
                     userObject.cameras = [CameraObject]()
                 }
                 
                 for camera in cameras {
                     let newCamera = CameraObject()
-                    if let name = camera.valueForKey("camName") as? String {
+                    if let name = camera.valueForKey("name") as? String {
                         newCamera.name = name
                     }
                     
-                    if let id = camera.valueForKey("camId") as? String {
+                    if let id = camera.valueForKey("id") as? String {
                         if let idInt = Int(id) {
                             newCamera.id = idInt
                         }
 
                     }
                     
-                    if let link = camera.valueForKey("camLink") as? String {
+                    if let link = camera.valueForKey("link") as? String {
                         newCamera.link = link
                     }
 
-                    if let fromDate = camera.valueForKey("cuFrom") as? String {
-                        newCamera.fromDate = fromDate
-                    }
-
-                    if let toDate = camera.valueForKey("cuTo") as? String {
-                        newCamera.toDate = toDate
-                    }
+//                    if let fromDate = camera.valueForKey("cuFrom") as? String {
+//                        newCamera.fromDate = CameraObject.parseStringToDate(fromDate)
+//                    }
+//
+//                    if let toDate = camera.valueForKey("cuTo") as? String {
+//                        newCamera.toDate = CameraObject.parseStringToDate(toDate)
+//                    }
 
                     userObject.cameras?.append(newCamera)
                 }
@@ -172,10 +172,26 @@ class AppUtility {
                 if let camId = cam.valueForKey("camId") as? String {
                     if let camIdInt = Int(camId) {
                         camera.id = camIdInt
-                        print(camIdInt)
-                        cameras.append(camera)
                     }
                 }
+                
+                if let name = cam.valueForKey("camName") as? String {
+                    camera.name = name
+                }
+                
+                if let link = cam.valueForKey("camLink") as? String {
+                    camera.link = link
+                }
+                
+                if let fromDate = cam.valueForKey("cuFrom") as? String {
+                    camera.fromDate = CameraObject.parseStringToDate(fromDate)
+                }
+                
+                if let toDate = cam.valueForKey("cuTo") as? String {
+                    camera.toDate = CameraObject.parseStringToDate(toDate)
+                }
+
+                cameras.append(camera)
             }
         }
         
@@ -194,7 +210,7 @@ class AppUtility {
         Alamofire.request(.POST, "http://chiasehosting.org/dahua/index.php", parameters: ["action": "login", "email": "\(user)", "password": "\(pass)"], headers: headers)
             .responseJSON { response in
                 if let JSON = response.result.value {
-                    print("JSON: \(JSON)")
+//                    print("JSON: \(JSON)")
                     userObject = parseToUserObject(JSON)
                     dispatch_semaphore_signal(semaphore)
                 }
@@ -350,4 +366,12 @@ class AppUtility {
         return cameras
     }
 
+    class func findCamera(cameraList: [CameraObject], whichCamera: CameraObject) -> Bool {
+        for camera in cameraList {
+            if whichCamera.id == camera.id {
+                return true
+            }
+        }
+        return false
+    }
 }

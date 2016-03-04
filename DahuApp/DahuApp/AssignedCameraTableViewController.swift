@@ -10,10 +10,11 @@ import UIKit
 
 class AssignedCameraTableViewController: UITableViewController {
     
-    var cameras = [CameraView]()
-    var email: String = ""
-//    var cameras: [CameraObject]?
-//    var selectedUser: UserObject?
+//    var cameras = [CameraView]()
+//    var email: String = ""
+    var cameras = [CameraObject]()
+    var selectedUser = UserObject()
+    var assignedCameras: [CameraObject]?
     
     let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
@@ -40,7 +41,6 @@ class AssignedCameraTableViewController: UITableViewController {
         super.viewDidLoad()
 
         delegate.setupNavigation((self.navigationController?.navigationBar)!, titleName: "List Camera")
-        loadSampleCameras()
     }
 
     override func didReceiveMemoryWarning() {
@@ -59,30 +59,13 @@ class AssignedCameraTableViewController: UITableViewController {
     }
     
     func saveAssignedCameras() {
-        // reset the assigned cameras
-        
-        // save new assigned cameras
+        print("Save assigned cameras")
         for index in 0...cameras.count-1 {
             let cameraCell = tableView.cellForRowAtIndexPath(NSIndexPath.init(forRow: index, inSection: 0)) as! CameraTableViewCell
             if cameraCell.switchOn.on {
-                print("Save this camera: ")
-                print(cameras[index].description)
-                cameras[index].save()
             }
         }
     }
-    
-    func loadSampleCameras() {
-        print("Load sample cameras")
-        cameras = [CameraView]()
-        
-        let camera1 = CameraView(switchOn: false, description: "Camera 1", url: "nhaccuatui.com", user_email_owner: email)
-        let camera2 = CameraView(switchOn: false, description: "Camera 2", url: "nhaccuatui.com", user_email_owner: email)
-        let camera3 = CameraView(switchOn: false, description: "Camera 3", url: "nhaccuatui", user_email_owner: email)
-        
-        cameras += [camera1, camera2, camera3]
-    }
-
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // Table view cells are reused and should be dequeued using a cell identifier.
@@ -90,12 +73,9 @@ class AssignedCameraTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! CameraTableViewCell
         
         let camera = cameras[indexPath.row]
+        cell.cameraDescription.text = camera.name
+        cell.switchOn.on = AppUtility.findCamera(assignedCameras!, whichCamera: camera)
         
-        cell.switchOn.on = camera.switchOn
-        cell.cameraDescription.text = camera.description
-        
-        print("Camera count: \(cameras.count) Camera: \(camera.description)")
-
         return cell
     }
     

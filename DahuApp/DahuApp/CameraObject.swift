@@ -12,22 +12,30 @@ class CameraObject {
     var id: Int
     var link: String
     var name: String
-    var fromDate: String
-    var toDate: String
+    var fromDate: NSDate?
+    var toDate: NSDate?
 
     init() {
         id = 0
         link = ""
         name = ""
-        fromDate = ""
-        toDate = ""
+        fromDate = nil
+        toDate = nil
     }
     
-    init(id: Int, link: String, name: String, fromDate: String, toDate: String) {
+    init(id: Int, link: String, name: String, fromDate: NSDate, toDate: NSDate) {
         self.id = id
         self.link = link
         self.name = name
         self.fromDate = fromDate
         self.toDate = toDate
+    }
+    
+    class func parseStringToDate(stringDate: String) -> NSDate? {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        return dateFormatter.dateFromString(stringDate)
+
     }
 }
