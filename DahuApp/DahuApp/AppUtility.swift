@@ -184,10 +184,12 @@ class AppUtility {
                 }
                 
                 if let fromDate = cam.valueForKey("cuFrom") as? String {
+                    print(fromDate)
                     camera.fromDate = CameraObject.parseStringToDate(fromDate)
                 }
                 
                 if let toDate = cam.valueForKey("cuTo") as? String {
+                    print(toDate)
                     camera.toDate = CameraObject.parseStringToDate(toDate)
                 }
 

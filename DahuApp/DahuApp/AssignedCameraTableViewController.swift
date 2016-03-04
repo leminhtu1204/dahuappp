@@ -15,6 +15,7 @@ class AssignedCameraTableViewController: UITableViewController {
     var cameras = [CameraObject]()
     var selectedUser = UserObject()
     var assignedCameras: [CameraObject]?
+    var selectedIndexPath: NSIndexPath?
     
     let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
@@ -60,11 +61,6 @@ class AssignedCameraTableViewController: UITableViewController {
     
     func saveAssignedCameras() {
         print("Save assigned cameras")
-        for index in 0...cameras.count-1 {
-            let cameraCell = tableView.cellForRowAtIndexPath(NSIndexPath.init(forRow: index, inSection: 0)) as! CameraTableViewCell
-            if cameraCell.switchOn.on {
-            }
-        }
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -81,6 +77,11 @@ class AssignedCameraTableViewController: UITableViewController {
     
     
     @IBAction func prepareForUnwindAssignedCameraView(sender: UIStoryboardSegue) {
+        if let configDateController = sender.sourceViewController as? ConfigDateTableViewController {
+            print("Unwind row: \(selectedIndexPath?.row)")
+            cameras[(selectedIndexPath?.row)!] = configDateController.selectedCamera
+        }
+        
         delegate.setupNavigation((self.navigationController?.navigationBar)!, titleName: "List Camera")
     }
 
@@ -120,14 +121,20 @@ class AssignedCameraTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "setDateCameraSegue" {
+            let configDateController = segue.destinationViewController as! ConfigDateTableViewController
+            configDateController.selectedUser = selectedUser
+            configDateController.selectedCamera = cameras[(tableView.indexPathForSelectedRow?.row)!]
+            selectedIndexPath = tableView.indexPathForSelectedRow
+        }
     }
-    */
+    
 
 }

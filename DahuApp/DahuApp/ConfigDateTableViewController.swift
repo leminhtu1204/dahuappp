@@ -9,7 +9,27 @@
 import UIKit
 
 class ConfigDateTableViewController: UITableViewController {
+    var selectedUser = UserObject()
+    var selectedCamera = CameraObject()
+    
+    @IBOutlet weak var fromDateSwitch: UISwitch!
+    @IBOutlet weak var toDateSwitch: UISwitch!
+    @IBOutlet weak var fromDatePicker: UIDatePicker!
+    @IBOutlet weak var toDatePicker: UIDatePicker!
+    
     @IBAction func btnCancel(sender: AnyObject) {
+        backToPrevious()
+    }
+    
+    @IBAction func saveDate(sender: AnyObject) {
+        if fromDateSwitch.on {
+            selectedCamera.fromDate = fromDatePicker.date
+        }
+        
+        if toDateSwitch.on {
+            selectedCamera.toDate = toDatePicker.date
+        }
+
         backToPrevious()
     }
     
@@ -37,6 +57,16 @@ class ConfigDateTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        if selectedCamera.fromDate != nil {
+            fromDateSwitch.on = true
+            fromDatePicker.date = selectedCamera.fromDate!
+        }
+        
+        if selectedCamera.toDate != nil {
+            toDateSwitch.on = true
+            toDatePicker.date = selectedCamera.toDate!
+        }
+
     }
 
     override func didReceiveMemoryWarning() {
