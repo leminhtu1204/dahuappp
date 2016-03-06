@@ -161,7 +161,6 @@ class UserManagementTableViewController: UITableViewController {
 
 }
 
-
 extension UserManagementTableViewController: UISearchBarDelegate {
     // MARK: - UISearchBar Delegate
     func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {

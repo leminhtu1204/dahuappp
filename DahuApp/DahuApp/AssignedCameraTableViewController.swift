@@ -16,8 +16,9 @@ class AssignedCameraTableViewController: UITableViewController {
     var selectedUser = UserObject()
     var assignedCameras: [CameraObject]?
     var selectedIndexPath: NSIndexPath?
-    
+    let searchController = UISearchController(searchResultsController: nil)
     let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    var filterCamera = [CameraObject]()
     
     @IBAction func btnSave(sender: AnyObject) {
         saveAssignedCameras()
@@ -40,7 +41,7 @@ class AssignedCameraTableViewController: UITableViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+        initSearchBar()
         delegate.setupNavigation((self.navigationController?.navigationBar)!, titleName: "List Camera")
     }
 
@@ -56,7 +57,10 @@ class AssignedCameraTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cameras.count
+        if searchController.active && searchController.searchBar.text != "" {
+            return filterCamera.count
+        }
+        return (cameras.count)
     }
     
     func saveAssignedCameras() {
@@ -67,8 +71,13 @@ class AssignedCameraTableViewController: UITableViewController {
         // Table view cells are reused and should be dequeued using a cell identifier.
         let cellIdentifier = "cameraTableViewCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! CameraTableViewCell
+        let camera : CameraObject
+        if searchController.active && searchController.searchBar.text != "" {
+            camera = filterCamera[indexPath.row]
+        } else {
+            camera = cameras[indexPath.row]
+        }
         
-        let camera = cameras[indexPath.row]
         cell.cameraDescription.text = camera.name
         cell.switchOn.on = AppUtility.findCamera(assignedCameras!, whichCamera: camera)
         
@@ -86,41 +95,14 @@ class AssignedCameraTableViewController: UITableViewController {
     }
 
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    func initSearchBar(){
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        tableView.tableHeaderView = searchController.searchBar
+        searchController.searchBar.tintColor = UIColor.blackColor()
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
     
     // MARK: - Navigation
 
@@ -136,5 +118,26 @@ class AssignedCameraTableViewController: UITableViewController {
         }
     }
     
+    func filterContentForSearchText(searchText: String) {
+        filterCamera = cameras.filter({( camera : CameraObject) -> Bool in
+            return camera.name.lowercaseString.containsString(searchText.lowercaseString)
+        })
+        tableView.reloadData()
+    }
 
 }
+
+extension AssignedCameraTableViewController: UISearchBarDelegate {
+    // MARK: - UISearchBar Delegate
+    func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        filterContentForSearchText(searchBar.text!)
+    }
+}
+
+extension AssignedCameraTableViewController: UISearchResultsUpdating {
+    // MARK: - UISearchResultsUpdating Delegate
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        filterContentForSearchText(searchController.searchBar.text!)
+    }
+}
+
