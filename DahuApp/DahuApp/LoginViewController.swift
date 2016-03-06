@@ -76,14 +76,14 @@ class LoginViewController: UIViewController {
         self.navigationController!.navigationBarHidden = true
         // Do any additional setup after loading the view.
      
-        let camera1 = CameraObject(id: 1, link: "trung.link", name: "Camera 1", fromDate: nil, toDate: nil)
-        let camera2 = CameraObject(id: 2, link: "trung.link", name: "Camera 1", fromDate: NSDate(), toDate: NSDate())
-        let camera3 = CameraObject(id: 3, link: "trung.link", name: "Camera 1", fromDate: nil, toDate: nil)
-        
-        let cameraList = [camera1, camera2, camera3]
-        let user = UserObject(id: 21, fullName: "Full Name", email: "email", isAdmin: true, password: "rfer")
-        
-        AppUtility.assignCameraToUser(cameraList, toUser: user)
+//        let camera1 = CameraObject(id: 1, link: "trung.link", name: "Camera 1", fromDate: nil, toDate: nil)
+//        let camera2 = CameraObject(id: 2, link: "trung.link", name: "Camera 1", fromDate: NSDate(), toDate: NSDate())
+//        let camera3 = CameraObject(id: 3, link: "trung.link", name: "Camera 1", fromDate: nil, toDate: nil)
+//        
+//        let cameraList = [camera1, camera2, camera3]
+//        let user = UserObject(id: 21, fullName: "Full Name", email: "email", isAdmin: true, password: "rfer")
+//        
+//        AppUtility.assignCameraToUser(cameraList, toUser: user)
     }
 
     override func didReceiveMemoryWarning() {

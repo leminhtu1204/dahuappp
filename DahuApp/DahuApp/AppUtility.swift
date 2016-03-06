@@ -401,7 +401,9 @@ class AppUtility {
             .responseJSON { response in
                 if let JSON = response.result.value {
                     print(JSON)
-                    code = 0
+                    if let resull = JSON["code"] as? String {
+                        code = Int(resull)!
+                    }
                     dispatch_semaphore_signal(semaphore)
                 }
         }
@@ -424,17 +426,6 @@ class AppUtility {
              cameraDictionaryObject = ["camera_id": camera.id, "start_date": CameraObject.parseDateToString(camera.fromDate)!,
                 "end_date": CameraObject.parseDateToString(camera.toDate)!]
             cameraArray.append(cameraDictionaryObject)
-            
-//            do {
-//                let jsonData = try NSJSONSerialization.dataWithJSONObject(cameraDictionaryObject, options: NSJSONWritingOptions.PrettyPrinted)
-//                let string = NSString(data: jsonData, encoding: NSUTF8StringEncoding)
-//                print(string)
-//                resultString = NSString(data: jsonData, encoding: NSUTF8StringEncoding)!
-//                
-//                
-//            } catch let error as NSError{
-//                print(error.description)
-//            }
         }
         
         let cameraList = ["cameras": cameraArray]
