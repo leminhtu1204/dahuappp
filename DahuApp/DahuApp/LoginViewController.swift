@@ -104,6 +104,9 @@ class LoginViewController: UIViewController {
         if segue.identifier == "adminSegue" {
             let userManagementTableViewController = segue.destinationViewController as! UserManagementTableViewController
             userManagementTableViewController.loginUser = loginUser
+        }else{
+            let cameraCollectionTableViewController = segue.destinationViewController as! CameraCollectionTableViewController
+            cameraCollectionTableViewController.loginUser = loginUser
         }
     }
     
