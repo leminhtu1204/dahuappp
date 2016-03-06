@@ -20,6 +20,15 @@ class AssignedCameraTableViewController: UITableViewController {
     let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
     var filterCamera = [CameraObject]()
     
+    @IBAction func switchOnCamera(sender: AnyObject) {
+        let view = sender.superview!
+        let cell = view!.superview as! CameraTableViewCell
+        
+        let indexPath = tableView.indexPathForCell(cell)
+        print(indexPath?.row)
+        
+        //TODO: add this camera to assignCamaras
+    }
     @IBAction func btnSave(sender: AnyObject) {
         saveAssignedCameras()
         backToPrevious()
@@ -65,6 +74,9 @@ class AssignedCameraTableViewController: UITableViewController {
     
     func saveAssignedCameras() {
         print("Save assigned cameras")
+        
+        let statusCode = AppUtility.assignCameraToUser(assignedCameras!, toUser: selectedUser)
+        print("Code: \(statusCode)")
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -82,6 +94,11 @@ class AssignedCameraTableViewController: UITableViewController {
         cell.switchOn.on = AppUtility.findCamera(assignedCameras!, whichCamera: camera)
         
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        let cell = self.tableView.cellForRowAtIndexPath(indexPath)
+        NSLog("did select and the text is \(cell?.textLabel?.text)")
     }
     
     
