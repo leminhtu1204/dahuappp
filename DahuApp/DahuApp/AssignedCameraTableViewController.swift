@@ -40,7 +40,7 @@ class AssignedCameraTableViewController: UITableViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+      
         delegate.setupNavigation((self.navigationController?.navigationBar)!, titleName: "List Camera")
     }
 

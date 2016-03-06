@@ -23,7 +23,7 @@ class CameraObject {
         toDate = nil
     }
     
-    init(id: Int, link: String, name: String, fromDate: NSDate, toDate: NSDate) {
+    init(id: Int, link: String, name: String, fromDate: NSDate?, toDate: NSDate?) {
         self.id = id
         self.link = link
         self.name = name
@@ -31,11 +31,27 @@ class CameraObject {
         self.toDate = toDate
     }
     
-    class func parseStringToDate(stringDate: String) -> NSDate? {
+    class func parseStringToDate(stringDate: String?) -> NSDate? {
+        if stringDate == nil {
+            return nil
+        }
+        
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         
-        return dateFormatter.dateFromString(stringDate)
+        return dateFormatter.dateFromString(stringDate!)
 
+    }
+    
+    class func parseDateToString(date: NSDate?) -> String? {
+        if date == nil {
+            return ""
+        }
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+
+        
+        return dateFormatter.stringFromDate(date!)
     }
 }

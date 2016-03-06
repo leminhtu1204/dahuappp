@@ -212,7 +212,7 @@ class AppUtility {
         Alamofire.request(.POST, "http://chiasehosting.org/dahua/index.php", parameters: ["action": "login", "email": "\(user)", "password": "\(pass)"], headers: headers)
             .responseJSON { response in
                 if let JSON = response.result.value {
-//                    print("JSON: \(JSON)")
+                    print("JSON: \(JSON)")
                     userObject = parseToUserObject(JSON)
                     dispatch_semaphore_signal(semaphore)
                 }
@@ -355,7 +355,6 @@ class AppUtility {
                 if let JSON = response.result.value {
                     print(JSON)
                     cameras = parseToCameraObjects(JSON)
-                    
                     dispatch_semaphore_signal(semaphore)
                 }
         }
@@ -375,5 +374,80 @@ class AppUtility {
             }
         }
         return false
+    }
+    
+    class func assignCameraToUser(cameraList: [CameraObject], toUser: UserObject) -> Int {
+        var code = Int(0)
+        let idString = toUser.id != nil ? "\(toUser.id!)" : ""
+        
+        var assignedCamerasString = NSString()
+        assignedCamerasString = convertCameraListToJSONString(cameraList)
+        
+        let parameters = [
+            "action": "assigncamera",
+            "user_id": "\(idString)",
+            "camlist": "\(assignedCamerasString)"
+        ]
+        
+        print(parameters)
+        
+        let semaphore = dispatch_semaphore_create(0)
+        
+        let headers = [
+            "Content-Type": "application/x-www-form-urlencoded"
+        ]
+        
+        Alamofire.request(.POST, "http://chiasehosting.org/dahua/index.php", parameters: parameters, headers: headers)
+            .responseJSON { response in
+                if let JSON = response.result.value {
+                    print(JSON)
+                    code = 0
+                    dispatch_semaphore_signal(semaphore)
+                }
+        }
+        
+        // waiting for the resquest to complete
+        while dispatch_semaphore_wait(semaphore, DISPATCH_TIME_NOW) != 0 {
+            NSRunLoop.currentRunLoop().runMode(NSDefaultRunLoopMode, beforeDate: NSDate(timeIntervalSinceNow: 10))
+        }
+        
+        return code
+    }
+    
+    // parse to camlist's value of "assigncamera"
+    class func convertCameraListToJSONString(cameraList: [CameraObject]) -> NSString {
+        var resultString = NSString()
+        var cameraDictionaryObject = NSDictionary()
+        var cameraArray = [NSDictionary]()
+        
+        for camera in cameraList {
+             cameraDictionaryObject = ["camera_id": camera.id, "start_date": CameraObject.parseDateToString(camera.fromDate)!,
+                "end_date": CameraObject.parseDateToString(camera.toDate)!]
+            cameraArray.append(cameraDictionaryObject)
+            
+//            do {
+//                let jsonData = try NSJSONSerialization.dataWithJSONObject(cameraDictionaryObject, options: NSJSONWritingOptions.PrettyPrinted)
+//                let string = NSString(data: jsonData, encoding: NSUTF8StringEncoding)
+//                print(string)
+//                resultString = NSString(data: jsonData, encoding: NSUTF8StringEncoding)!
+//                
+//                
+//            } catch let error as NSError{
+//                print(error.description)
+//            }
+        }
+        
+        let cameraList = ["cameras": cameraArray]
+        
+        do {
+            let jsonData = try NSJSONSerialization.dataWithJSONObject(cameraList, options: NSJSONWritingOptions.PrettyPrinted)
+            let string = NSString(data: jsonData, encoding: NSUTF8StringEncoding)
+            print(string)
+            resultString = NSString(data: jsonData, encoding: NSUTF8StringEncoding)!
+        } catch let error as NSError{
+            print(error.description)
+        }
+
+        return resultString
     }
 }
