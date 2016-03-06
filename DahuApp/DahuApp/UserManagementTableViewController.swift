@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CoreData
 
 class UserManagementTableViewController: UITableViewController {
     
@@ -16,6 +15,8 @@ class UserManagementTableViewController: UITableViewController {
     var selectedRow = 0 as Int
     var selectedIndexPath: NSIndexPath?
     let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    let searchController = UISearchController(searchResultsController: nil)
+    var filterUser = [UserObject]()
     
     func deleteUser(index: Int){
         let selectedUser = loginUser.userList![index]
@@ -23,6 +24,16 @@ class UserManagementTableViewController: UITableViewController {
         let isSuccessfully = AppUtility.deleleUser(selectedUser.id!) as Bool
         print("Is user deleted? - \(isSuccessfully)")
         loginUser.userList?.removeAtIndex(index)
+    }
+    
+    func initSearchBar(){
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        tableView.tableHeaderView = searchController.searchBar
+        searchController.searchBar.scopeButtonTitles = ["Name", "Email"]
+        searchController.searchBar.delegate = self
+        searchController.searchBar.tintColor = UIColor.blackColor()
     }
     
     func initNavigate(){
@@ -33,6 +44,7 @@ class UserManagementTableViewController: UITableViewController {
         super.viewDidLoad()
         self.navigationController!.navigationBarHidden = false
         initNavigate()
+        initSearchBar()
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,15 +59,26 @@ class UserManagementTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if searchController.active && searchController.searchBar.text != "" {
+            return filterUser.count
+        }
         return (loginUser.userList?.count)!
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
-       
-        let user = loginUser.userList![indexPath.row]
-        cell.textLabel!.text = user.fullName
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UserTableViewCell
+        let user : UserObject
+        
+        if searchController.active && searchController.searchBar.text != "" {
+            user = filterUser[indexPath.row]
+        } else {
+            user = loginUser.userList![indexPath.row]
+        }
+        
+        cell.lblFullName.text = user.fullName
+        cell.lblEmail.text = user.email
         
         return cell
     }
@@ -125,4 +148,33 @@ class UserManagementTableViewController: UITableViewController {
             }
         }
     }
+    
+    func filterContentForSearchText(searchText: String, scope: String = "Name") {
+        filterUser = loginUser.userList!.filter({( user : UserObject) -> Bool in
+            if(scope == "Email"){
+                return user.email.lowercaseString.containsString(searchText.lowercaseString)
+            }
+            return user.fullName.lowercaseString.containsString(searchText.lowercaseString)
+        })
+        tableView.reloadData()
+    }
+
 }
+
+
+extension UserManagementTableViewController: UISearchBarDelegate {
+    // MARK: - UISearchBar Delegate
+    func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        filterContentForSearchText(searchBar.text!, scope: searchBar.scopeButtonTitles![selectedScope])
+    }
+}
+
+extension UserManagementTableViewController: UISearchResultsUpdating {
+    // MARK: - UISearchResultsUpdating Delegate
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        let searchBar = searchController.searchBar
+        let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
+        filterContentForSearchText(searchController.searchBar.text!, scope: scope)
+    }
+}
+

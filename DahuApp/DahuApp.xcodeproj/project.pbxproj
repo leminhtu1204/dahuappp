@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		051B5F4F1C8C0D73003E4951 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051B5F4E1C8C0D73003E4951 /* UserTableViewCell.swift */; };
 		0532AA971C5483D000711AF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0532AA961C5483D000711AF5 /* AppDelegate.swift */; };
 		0532AA9C1C5483D000711AF5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0532AA9A1C5483D000711AF5 /* Main.storyboard */; };
 		0532AA9F1C5483D000711AF5 /* DahuApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0532AA9D1C5483D000711AF5 /* DahuApp.xcdatamodeld */; };
@@ -108,6 +109,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		051B5F4E1C8C0D73003E4951 /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		0532AA931C5483D000711AF5 /* DahuApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DahuApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0532AA961C5483D000711AF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0532AA9B1C5483D000711AF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				0564E97C1C79D3AF0026ABC6 /* AssignedCameraTableViewController.swift */,
 				0564E97E1C79D73D0026ABC6 /* ConfigDateTableViewController.swift */,
 				480BBE571C7CA7680041A980 /* CameraTableViewCell.swift */,
+				051B5F4E1C8C0D73003E4951 /* UserTableViewCell.swift */,
 			);
 			name = AdminView;
 			sourceTree = "<group>";
@@ -386,6 +389,7 @@
 				48E905801C833A9C002287FA /* UserObject.swift in Sources */,
 				48E905881C833FD0002287FA /* AppUtility.swift in Sources */,
 				0564E9781C79A8E00026ABC6 /* UserProfile+CoreDataProperties.swift in Sources */,
+				051B5F4F1C8C0D73003E4951 /* UserTableViewCell.swift in Sources */,
 				0532AAB01C55205F00711AF5 /* LoginViewController.swift in Sources */,
 				0564E9791C79A8E00026ABC6 /* UserProfile.swift in Sources */,
 				0532AAB51C55277100711AF5 /* AssignedCameraCollectionViewController.swift in Sources */,
