@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		051B5F4F1C8C0D73003E4951 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051B5F4E1C8C0D73003E4951 /* UserTableViewCell.swift */; };
+		051B5F581C8C82B8003E4951 /* CameraItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051B5F571C8C82B8003E4951 /* CameraItemTableViewCell.swift */; };
+		051B5F601C8C8467003E4951 /* CameraCollectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051B5F5F1C8C8467003E4951 /* CameraCollectionTableViewController.swift */; };
 		0532AA971C5483D000711AF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0532AA961C5483D000711AF5 /* AppDelegate.swift */; };
 		0532AA9C1C5483D000711AF5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0532AA9A1C5483D000711AF5 /* Main.storyboard */; };
 		0532AA9F1C5483D000711AF5 /* DahuApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0532AA9D1C5483D000711AF5 /* DahuApp.xcdatamodeld */; };
@@ -15,7 +17,6 @@
 		0532AAA41C5483D000711AF5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0532AAA21C5483D000711AF5 /* LaunchScreen.storyboard */; };
 		0532AAB01C55205F00711AF5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0532AAAF1C55205F00711AF5 /* LoginViewController.swift */; };
 		0532AAB31C5525CD00711AF5 /* 120910dog3-41bdd.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0532AAB21C5525CD00711AF5 /* 120910dog3-41bdd.jpg */; };
-		0532AAB51C55277100711AF5 /* AssignedCameraCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0532AAB41C55277100711AF5 /* AssignedCameraCollectionViewController.swift */; };
 		0564E9781C79A8E00026ABC6 /* UserProfile+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564E9761C79A8E00026ABC6 /* UserProfile+CoreDataProperties.swift */; };
 		0564E9791C79A8E00026ABC6 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564E9771C79A8E00026ABC6 /* UserProfile.swift */; };
 		0564E97B1C79B3390026ABC6 /* UserManagementTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0564E97A1C79B3390026ABC6 /* UserManagementTableViewController.swift */; };
@@ -110,6 +111,8 @@
 
 /* Begin PBXFileReference section */
 		051B5F4E1C8C0D73003E4951 /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		051B5F571C8C82B8003E4951 /* CameraItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraItemTableViewCell.swift; sourceTree = "<group>"; };
+		051B5F5F1C8C8467003E4951 /* CameraCollectionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraCollectionTableViewController.swift; sourceTree = "<group>"; };
 		0532AA931C5483D000711AF5 /* DahuApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DahuApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0532AA961C5483D000711AF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0532AA9B1C5483D000711AF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -119,7 +122,6 @@
 		0532AAA51C5483D000711AF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0532AAAF1C55205F00711AF5 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0532AAB21C5525CD00711AF5 /* 120910dog3-41bdd.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "120910dog3-41bdd.jpg"; sourceTree = "<group>"; };
-		0532AAB41C55277100711AF5 /* AssignedCameraCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssignedCameraCollectionViewController.swift; sourceTree = "<group>"; };
 		0564E9761C79A8E00026ABC6 /* UserProfile+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserProfile+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		0564E9771C79A8E00026ABC6 /* UserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		0564E97A1C79B3390026ABC6 /* UserManagementTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManagementTableViewController.swift; sourceTree = "<group>"; };
@@ -202,8 +204,9 @@
 		0532AAAC1C551F1200711AF5 /* UserView */ = {
 			isa = PBXGroup;
 			children = (
-				0532AAB41C55277100711AF5 /* AssignedCameraCollectionViewController.swift */,
 				0564E9801C79DFA80026ABC6 /* CameraDetailViewController.swift */,
+				051B5F571C8C82B8003E4951 /* CameraItemTableViewCell.swift */,
+				051B5F5F1C8C8467003E4951 /* CameraCollectionTableViewController.swift */,
 			);
 			name = UserView;
 			sourceTree = "<group>";
@@ -385,14 +388,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				051B5F581C8C82B8003E4951 /* CameraItemTableViewCell.swift in Sources */,
 				480BBE581C7CA7680041A980 /* CameraTableViewCell.swift in Sources */,
 				48E905801C833A9C002287FA /* UserObject.swift in Sources */,
 				48E905881C833FD0002287FA /* AppUtility.swift in Sources */,
 				0564E9781C79A8E00026ABC6 /* UserProfile+CoreDataProperties.swift in Sources */,
 				051B5F4F1C8C0D73003E4951 /* UserTableViewCell.swift in Sources */,
+				051B5F601C8C8467003E4951 /* CameraCollectionTableViewController.swift in Sources */,
 				0532AAB01C55205F00711AF5 /* LoginViewController.swift in Sources */,
 				0564E9791C79A8E00026ABC6 /* UserProfile.swift in Sources */,
-				0532AAB51C55277100711AF5 /* AssignedCameraCollectionViewController.swift in Sources */,
 				0532AA971C5483D000711AF5 /* AppDelegate.swift in Sources */,
 				0564E97B1C79B3390026ABC6 /* UserManagementTableViewController.swift in Sources */,
 				48E9058A1C85D329002287FA /* CameraObject.swift in Sources */,
