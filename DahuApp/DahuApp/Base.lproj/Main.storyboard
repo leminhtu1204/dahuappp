@@ -563,7 +563,7 @@
                                                 <rect key="frame" x="8" y="6" width="51" height="31"/>
                                             </variation>
                                             <connections>
-                                                <action selector="switchOnCamera:" destination="WMG-wg-BwC" eventType="valueChanged" id="RrZ-Pa-l8E"/>
+                                                <action selector="switchOnToAssignCamera:" destination="WMG-wg-BwC" eventType="valueChanged" id="Jq0-GJ-Luk"/>
                                             </connections>
                                         </switch>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Camera 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pkt-TY-3bc">

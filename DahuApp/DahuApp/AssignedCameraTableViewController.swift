@@ -20,15 +20,29 @@ class AssignedCameraTableViewController: UITableViewController {
     let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
     var filterCamera = [CameraObject]()
     
-    @IBAction func switchOnCamera(sender: AnyObject) {
+  
+    @IBAction func switchOnToAssignCamera(sender: UISwitch) {
         let view = sender.superview!
-        let cell = view!.superview as! CameraTableViewCell
+        let cell = view.superview as! CameraTableViewCell
         
         let indexPath = tableView.indexPathForCell(cell)
-        print(indexPath?.row)
+        print(indexPath!.row)
         
-        //TODO: add this camera to assignCamaras
+        // Assign camera when switch on
+        if sender.on {
+            print(sender.on)
+            if AppUtility.findCamera(assignedCameras!, whichCamera: cameras[indexPath!.row]) != true {
+                assignedCameras?.append(cameras[(indexPath?.row)!])
+                
+                print("Add camera: \(cameras[indexPath!.row].name)")
+            }
+        } else {
+            assignedCameras?.removeAtIndex((indexPath?.row)!)
+            print("Remove camera: \(cameras[indexPath!.row].name)")
+          
+        }
     }
+    
     @IBAction func btnSave(sender: AnyObject) {
         saveAssignedCameras()
         backToPrevious()
@@ -73,7 +87,7 @@ class AssignedCameraTableViewController: UITableViewController {
     }
     
     func saveAssignedCameras() {
-        print("Save assigned cameras")
+        print("Save assigned cameras to user \(selectedUser.fullName)")
         
         let statusCode = AppUtility.assignCameraToUser(assignedCameras!, toUser: selectedUser)
         print("Code: \(statusCode)")
