@@ -26,6 +26,7 @@ class AssignedCameraTableViewController: UITableViewController {
         let cell = view.superview as! CameraTableViewCell
         
         let indexPath = tableView.indexPathForCell(cell)
+        selectedIndexPath = indexPath
         print(indexPath!.row)
         
         // Assign camera when switch on
@@ -118,8 +119,11 @@ class AssignedCameraTableViewController: UITableViewController {
     
     @IBAction func prepareForUnwindAssignedCameraView(sender: UIStoryboardSegue) {
         if let configDateController = sender.sourceViewController as? ConfigDateTableViewController {
-            print("Unwind row: \(selectedIndexPath?.row)")
-            cameras[(selectedIndexPath?.row)!] = configDateController.selectedCamera
+            let indexOfAssignCameras = AppUtility.findCameraReturnIndex(assignedCameras!, whichCamera: configDateController.selectedCamera)
+           
+            if(indexOfAssignCameras != -1) {
+                assignedCameras![indexOfAssignCameras] = configDateController.selectedCamera
+            }
         }
         
         delegate.setupNavigation((self.navigationController?.navigationBar)!, titleName: "List Camera")

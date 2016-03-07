@@ -184,12 +184,12 @@ class AppUtility {
                 }
                 
                 if let fromDate = cam.valueForKey("cuFrom") as? String {
-                    print(fromDate)
+                 //   print(fromDate)
                     camera.fromDate = CameraObject.parseStringToDate(fromDate)
                 }
                 
                 if let toDate = cam.valueForKey("cuTo") as? String {
-                    print(toDate)
+            //        print(toDate)
                     camera.toDate = CameraObject.parseStringToDate(toDate)
                 }
 
@@ -375,6 +375,16 @@ class AppUtility {
         }
         return false
     }
+    
+    class func findCameraReturnIndex(cameraList: [CameraObject], whichCamera: CameraObject) -> Int {
+        for i in 0...(cameraList.count-1) {
+            if cameraList[i].id == whichCamera.id {
+                return i
+            }
+        }
+        return -1
+    }
+
     
     class func assignCameraToUser(cameraList: [CameraObject], toUser: UserObject) -> Int {
         var code = Int(0)
