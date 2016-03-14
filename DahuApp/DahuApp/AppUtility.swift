@@ -84,35 +84,35 @@ class AppUtility {
             }
             
             // CameraDetail
-            if let cameras = data.valueForKey("Camera") as? NSArray {
+            if let cameras = data.valueForKey("CameraDetail") as? NSArray {
                 if cameras.count > 0 {
                     userObject.cameras = [CameraObject]()
                 }
                 
                 for camera in cameras {
                     let newCamera = CameraObject()
-                    if let name = camera.valueForKey("name") as? String {
+                    if let name = camera.valueForKey("camName") as? String {
                         newCamera.name = name
                     }
                     
-                    if let id = camera.valueForKey("id") as? String {
+                    if let id = camera.valueForKey("camId") as? String {
                         if let idInt = Int(id) {
                             newCamera.id = idInt
                         }
 
                     }
                     
-                    if let link = camera.valueForKey("link") as? String {
+                    if let link = camera.valueForKey("camLink") as? String {
                         newCamera.link = link
                     }
 
-//                    if let fromDate = camera.valueForKey("cuFrom") as? String {
-//                        newCamera.fromDate = CameraObject.parseStringToDate(fromDate)
-//                    }
-//
-//                    if let toDate = camera.valueForKey("cuTo") as? String {
-//                        newCamera.toDate = CameraObject.parseStringToDate(toDate)
-//                    }
+                    if let fromDate = camera.valueForKey("cuFrom") as? String {
+                        newCamera.fromDate = CameraObject.parseStringToDate(fromDate)
+                    }
+
+                    if let toDate = camera.valueForKey("cuTo") as? String {
+                        newCamera.toDate = CameraObject.parseStringToDate(toDate)
+                    }
 
                     userObject.cameras?.append(newCamera)
                 }

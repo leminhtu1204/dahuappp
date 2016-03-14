@@ -27,6 +27,11 @@ class CameraCollectionTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        if(loginUser.cameras != nil) {
+            for camera in loginUser.cameras!{
+                print(camera.link)
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,7 +49,7 @@ class CameraCollectionTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         if(self.loginUser.cameras != nil){
-            return (self.loginUser.cameras?.count)!
+            return self.loginUser.cameras!.count
         }
         return 0
     }
@@ -54,15 +59,16 @@ class CameraCollectionTableViewController: UITableViewController {
     }
 
 
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCellWithIdentifier("cameraItem", forIndexPath: indexPath) as! CameraItemTableViewCell
+        let camera : CameraObject
+        camera = loginUser.cameras![indexPath.row]
+        
+        cell.cameraName.text = camera.name
+        
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.

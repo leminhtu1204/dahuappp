@@ -17,7 +17,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var btnPassword: UITextField!
     
     @IBAction func btnSignIn(sender: AnyObject) {
-     //   let userObject = AppUtility.loginUser(txtUserName.text!, pass: btnPassword.text!) as UserObject
+        print("User: \(txtUserName.text)")
+        print("Password: \(btnPassword.text)")
         loginUser = AppUtility.loginUser(txtUserName.text!, pass: btnPassword.text!) as UserObject
         
         if (loginUser.email == "") {
