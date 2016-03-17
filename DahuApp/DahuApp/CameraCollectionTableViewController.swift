@@ -54,7 +54,7 @@ class CameraCollectionTableViewController: UITableViewController {
         return 0
     }
     
-    @IBAction func prepareForUnwind(sender: UIStoryboardSegue) {
+    @IBAction func prepareForUnwindToCameraCollection(sender: UIStoryboardSegue) {
         initNavigate()
     }
 
